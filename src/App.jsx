@@ -3,35 +3,48 @@ import { useEffect, useState } from 'react'
 
 function App() {
   const url = "https://randomuser.me/api/?results=5"
-  const [datosPersona, setDatosPersona]=useState("")
+  const [datosPersona, setDatosPersona]=useState([])
+  const [error, setError] = useState(null);
+
+  const fetchRandomUsers = async()=>{
+    try{
+      const lectura = await fetch(url)
+      if(!lectura.ok){
+        throw new Error(`HTTP error! status: ${lectura.status}`)
+      }
+      const datos = await lectura.json()
+      const newPersonas = datos.results.map(persona => (
+        <article key={persona.login.uuid}>
+          <h3>{persona.name.first} {persona.name.last}</h3>
+          <img src={persona.picture.medium} alt={`${persona.name.first} ${persona.name.last}`} />
+          <p>Country: {persona.location.country} {persona.nat}</p>
+          <p>State: {persona.location.state}</p>
+          <p>City: {persona.location.city}</p>
+          <p>Email: {persona.email}</p>
+        </article>
+      ))
+      setDatosPersona(newPersonas)
+      setError(null)
+    } catch(error) {
+      setError(`Failed to fetch data: ${error.message}`)
+      setDatosPersona([])
+    }
+  }
 
   useEffect(()=>{
-    const peticion=fetch(url)
-    peticion
-      .then (data=>data.json())
-      .then (lectura=>{
-        lectura.results.map((persona)=>{
-          setDatosPersona((prev)=>[
-            ...prev,
-            <article key={persona.login.uuid}>
-              <h3>{persona.name.first} {persona.name.last}</h3>
-              <img src={persona.picture.medium}/>
-              <p>Country: {persona.location.country} {persona.nat}</p>
-              <p>State: {persona.location.state}</p>
-              <p>City: {persona.location.city}</p>
-              <p>email: {persona.email}</p>
-            </article>
-          ])
-        })
-      })
-      .catch(()=>console.log("Se ha producido un error"))
-  },[]);
+    fetchRandomUsers()
+  },[])
   
   return (
     <>
     <main>
-      <header><h1>Random users generator</h1></header>
-      <section>{datosPersona}</section>
+      <header>
+        <h1>Random users generator</h1>
+        <button type="button" onClick={fetchRandomUsers}>+</button>
+      </header>
+      <section>
+        {error ? <p className='onError'>{error}</p> : datosPersona}
+      </section>
     </main>
     <footer>
       <h3>Powered by <a href="https://randomuser.me">https://randomuser.me</a></h3>
