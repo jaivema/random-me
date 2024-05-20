@@ -1,23 +1,46 @@
-
 main{
     background-color:black;
 }
-header{
-    background-color:burlywood;
-}
-section, footer{
-    background-color:darkgray;
-}
-article{
-    background-color: floralwhite;
-}
-.onError{
-    background-color:red;
-    color:white;
-    font-size:24px;
-    padding:50px; 
-    text-align: center;
-}
-img {
-    filter: grayscale(.8);
-}
+    header{
+        background: linear-gradient(0.5turn, #a2d331, #daf7c4, #bdd31c63);
+        color: black;
+        text-align: center;
+        padding: 10px;
+        text-shadow: 5px 5px 10px black;
+    }
+        .onError{
+            background-color:red;
+            color:white;
+            font-size:24px;
+            padding:50px; 
+            text-align: center;
+        }
+        .onLoading{
+            font-size:24px;
+            padding:50px; 
+            text-align: center;
+        }
+        input{
+            max-width:40px; 
+            background-color: rgb(163, 239, 163);
+            color:#206b0d;
+            text-align: center;
+        }
+        section{
+            background-color:darkgray;
+        }
+        article{
+            background-color: floralwhite;
+        }
+        img {
+            filter: grayscale(.8);
+        }
+    footer{
+        background: linear-gradient(0.5turn, #344018, #000000, #5e63339e);
+        color: white;
+        padding: 20px;
+    }
+        a{
+            text-decoration: none;
+            color:#a2d331;
+        }

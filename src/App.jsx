@@ -2,32 +2,39 @@ import './App.css'
 import { useEffect, useState } from 'react'
 
 function App() {
-  const url = "https://randomuser.me/api/?results=5"
-  const [datosPersona, setDatosPersona]=useState([])
-  const [error, setError] = useState(null);
+  const requestURL = "https://randomuser.me/api/"
+  const resultsFilter = "?results"
+  const [numberUsers, setNumberUsers] = useState(3)
+  const [randomUser, setRandomUser]=useState([])
+  const [error, setError] = useState(null)
+  const [isLoading, setIsLoading] = useState(true)
 
-  const fetchRandomUsers = async()=>{
+  async function fetchRandomUsers(){
+    const pathURL = `${requestURL}${resultsFilter}=${numberUsers}`
+    let response = ''
     try{
-      const lectura = await fetch(url)
-      if(!lectura.ok){
-        throw new Error(`HTTP error! status: ${lectura.status}`)
+      response = await fetch(pathURL)
+      if(!response.ok){
+        throw new Error(`HTTP error! status: ${response.status} ${response.url}`)
       }
-      const datos = await lectura.json()
-      const newPersonas = datos.results.map(persona => (
-        <article key={persona.login.uuid}>
-          <h3>{persona.name.first} {persona.name.last}</h3>
-          <img src={persona.picture.medium} alt={`${persona.name.first} ${persona.name.last}`} />
-          <p>Country: {persona.location.country} {persona.nat}</p>
-          <p>State: {persona.location.state}</p>
-          <p>City: {persona.location.city}</p>
-          <p>Email: {persona.email}</p>
+      const data = await response.json()
+      const newUsers = data.results.map(user => (
+        <article key={user.login.uuid}>
+          <h3>{user.name.first} {user.name.last}</h3>
+          <img src={user.picture.medium} alt={`${user.name.first} ${user.name.last}`} />
+          <p>Country: {user.location.country} {user.nat}</p>
+          <p>State: {user.location.state}</p>
+          <p>City: {user.location.city}</p>
+          <p>Email: {user.email}</p>
         </article>
       ))
-      setDatosPersona(newPersonas)
+      setRandomUser(newUsers)
+      setIsLoading(false)
       setError(null)
-    } catch(error) {
-      setError(`Failed to fetch data: ${error.message}`)
-      setDatosPersona([])
+    }catch(error) {
+      setError(`Failed to fetch response: ${error.message}`)
+      setIsLoading(false)
+      setRandomUser([])
     }
   }
 
@@ -40,16 +47,26 @@ function App() {
     <main>
       <header>
         <h1>Random users generator</h1>
-        <button type="button" onClick={fetchRandomUsers}>+</button>
+        {isLoading && <p className='onLoading'>Loading...</p>}
+        <input type="number" onChange={(e) => setNumberUsers(e.target.value)}
+          value={numberUsers} 
+          placeholder='number'
+        />
+        <button type="button" onClick={fetchRandomUsers}>Submit &gt; </button>
       </header>
       <section>
-        {error ? <p className='onError'>{error}</p> : datosPersona}
+        {error ? <p className='onError'><strong>{error}</strong></p> : randomUser}
       </section>
     </main>
     <footer>
       <h3>Powered by <a href="https://randomuser.me">https://randomuser.me</a></h3>
       <h4>Copyright Notice</h4>
-      <p>All randomly generated photos were hand picked from the authorized section of <a href="http://uifaces.com">UI Faces</a>. Please visit <a href="https://web.archive.org/web/20160811185628/http://uifaces.com/faq">UI Faces FAQ</a> for more information regarding how you can use these faces.</p>
+      <p>
+        All randomly generated photos were hand picked from the authorized section of 
+        <a href="http://uifaces.com"> UI Faces</a>. Please visit 
+        <a href="https://web.archive.org/web/20160811185628/http://uifaces.com/faq"> UI Faces FAQ </a> 
+        for more information regarding how you can use these faces.
+      </p>
     </footer>
     </>
   )
