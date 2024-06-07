@@ -28,9 +28,15 @@ main{
         }
         section{
             background-color:darkgray;
+            display: flex;
+            flex-wrap: wrap;
+            
         }
         article{
             background-color: floralwhite;
+            width:250px;
+            margin: 2px 10px;
+            padding: 20px 20px;
         }
         img {
             filter: grayscale(.8);

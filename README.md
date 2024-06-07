@@ -1,6 +1,8 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/34e2defc-b429-49ce-b7b1-7861e4bf8f07/deploy-status)](https://app.netlify.com/sites/jaivema-random-me/deploys)
+
 # Random users generator
 
-> [Free api](https://randomuser.me/)
+[Free api](https://randomuser.me/)
 
 ## Pre Stack dependencies template
 
