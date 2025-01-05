@@ -30,13 +30,16 @@ main{
             background-color:darkgray;
             display: flex;
             flex-wrap: wrap;
-            
-        }
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }   
         article{
             background-color: floralwhite;
             width:250px;
             margin: 2px 10px;
             padding: 20px 20px;
+            border-radius: 6px;
         }
         img {
             filter: grayscale(.8);
