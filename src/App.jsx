@@ -47,14 +47,14 @@ function App() {
     <main>
       <header>
         <h1>Random users generator</h1>
-        {isLoading && <p className='onLoading'>Loading...</p>}
         <input type="number" onChange={(e) => setNumberUsers(e.target.value)}
           value={numberUsers} 
           placeholder='number'
-        />
+          />
         <button type="button" onClick={fetchRandomUsers}>Submit &gt; </button>
       </header>
       <section>
+          {isLoading && <p className='onLoading'>Loading...</p>}
         {error ? <p className='onError'><strong>{error}</strong></p> : randomUser}
       </section>
     </main>
