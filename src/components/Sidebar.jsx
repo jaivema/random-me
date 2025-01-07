@@ -1,4 +1,11 @@
-export default function Sidebar() {
+export default function Sidebar({ filters, setFilters }) {
+    const handleFilterChange = (e) => {
+        const {name, value} = e.target;
+        setFilters({
+            ...filters,
+            [name]: value
+        })
+    }
     return (
         <>
             <h2>Filters</h2>
@@ -8,6 +15,8 @@ export default function Sidebar() {
                 </label>
                 <select
                     name="gender"
+                    value={filters.gender}
+                    onChange={handleFilterChange}
                 >
                     <option value="">All</option>
                     <option value="female">Female</option>
@@ -18,6 +27,8 @@ export default function Sidebar() {
                 </label>
                 <select
                     name="nat"
+                    value={filters.nat}
+                    onChange={handleFilterChange}
                 >
                     <option value="">All</option>
                     <option value="ES">Spain</option>

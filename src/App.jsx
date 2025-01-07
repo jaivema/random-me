@@ -6,42 +6,37 @@ function App() {
   const requestURL = "https://randomuser.me/api/"
   const resultsFilter = "?results"
   const [numberUsers, setNumberUsers] = useState(3)
-  const [randomUser, setRandomUser] = useState([])
+  const [randomUsers, setRandomUsers] = useState([])
   const [error, setError] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
+  const [filters, setFilters] = useState({
+    gender: "",
+    nat: "",
+  });
 
   async function fetchRandomUsers() {
-    const pathURL = `${requestURL}${resultsFilter}=${numberUsers}`
-    let response = ''
+    setIsLoading(true);
     try {
-      response = await fetch(pathURL)
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status} ${response.url}`)
-      }
+      let url = `https://randomuser.me/api/?results=${numberUsers}`;
+      if (filters.gender) url += `&gender=${filters.gender}`;
+      if (filters.nat) url += `&nat=${filters.nat}`;
+
+      const response = await fetch(url)
       const data = await response.json()
-      const newUsers = data.results.map(user => (
-        <article key={user.login.uuid}>
-          <h3>{user.name.first} {user.name.last}</h3>
-          <img src={user.picture.medium} alt={`${user.name.first} ${user.name.last}`} />
-          <p>Country: {user.location.country} {user.nat}</p>
-          <p>State: {user.location.state}</p>
-          <p>City: {user.location.city}</p>
-          <p>Email: {user.email}</p>
-        </article>
-      ))
-      setRandomUser(newUsers)
-      setIsLoading(false)
+      setRandomUsers(data.results)
       setError(null)
     } catch (error) {
+      console.error("Error fetching users:", error);
       setError(`Failed to fetch response: ${error.message}`)
-      setIsLoading(false)
-      setRandomUser([])
+      setRandomUsers([])
+    } finally {
+      setIsLoading(false);
     }
   }
 
   useEffect(() => {
     fetchRandomUsers()
-  }, [])
+  }, [filters])
 
   return (
     <div className="container">
@@ -55,12 +50,21 @@ function App() {
       </header>
       <div className="content">
         <aside className="sidebar">
-          <Sidebar />
+          <Sidebar filters={filters} setFilters={setFilters} />
         </aside>
         <main>
           <section>
             {isLoading && <p className='onLoading'>Loading...</p>}
-            {error ? <p className='onError'><strong>{error}</strong></p> : randomUser}
+            {error ? <p className='onError'><strong>{error}</strong></p> : randomUsers.map((user, index) => (
+              <article key={user.login.uuid}>
+              <h3>{user.name.first} {user.name.last}</h3>
+              <img src={user.picture.medium} alt={`${user.name.first} ${user.name.last}`} />
+              <p>Country: {user.location.country} {user.nat}</p>
+              <p>State: {user.location.state}</p>
+              <p>City: {user.location.city}</p>
+              <p>Email: {user.email}</p>
+            </article>
+            ))}
           </section>
         </main>
       </div>
