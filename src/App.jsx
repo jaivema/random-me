@@ -3,8 +3,6 @@ import { useEffect, useState } from 'react'
 import Sidebar from './components/Sidebar'
 
 function App() {
-  const requestURL = "https://randomuser.me/api/"
-  const resultsFilter = "?results"
   const [numberUsers, setNumberUsers] = useState(3)
   const [randomUsers, setRandomUsers] = useState([])
   const [error, setError] = useState(null)
