@@ -1,6 +1,6 @@
 export default function Sidebar({ filters, setFilters }) {
     const handleFilterChange = (e) => {
-        const {name, value} = e.target;
+        const { name, value } = e.target;
         setFilters({
             ...filters,
             [name]: value
@@ -8,8 +8,8 @@ export default function Sidebar({ filters, setFilters }) {
     }
     return (
         <>
-            <h2>Filters</h2>
-            <div>
+            <div className="sidebarItems">
+                <h2>Filters</h2>
                 <label>
                     Gender
                 </label>
