@@ -72,10 +72,11 @@ function App() {
                 <article key={index}>
                   <h3>{user.name.first} {user.name.last}</h3>
                   <img src={user.picture.medium} alt={`${user.name.first} ${user.name.last}`} />
-                  <p>Country: {user.location.country} {user.nat}</p>
+                  <p>Country: {user.location.country}</p>
                   <p>State: {user.location.state}</p>
                   <p>City: {user.location.city}</p>
                   <p>Email: {user.email}</p>
+                  <p>Nationality: {user.nat}</p>
                 </article>
               ))}
           </section>

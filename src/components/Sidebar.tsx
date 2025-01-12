@@ -16,7 +16,7 @@ interface SidebarProps {
  */
 export default function Sidebar({ filters, onFiltersChange }: SidebarProps) {
 
-    const [inputUsers, setInputUsers] = useState(filters.numberUsers.toString());
+    const [inputUsers, setInputUsers] = useState<number>(filters.numberUsers);
 
     const handleSubmit = () => {
         const numResults = Number(inputUsers);
@@ -27,7 +27,7 @@ export default function Sidebar({ filters, onFiltersChange }: SidebarProps) {
             <div className="sidebarItems">
                 <h2>Filters</h2>
                 <label>Number of users</label>
-                <input type="number" min="1" onChange={(e) => setInputUsers(e.target.value)}
+                <input type="number" min="1" onChange={(e) => setInputUsers(parseInt(e.target.value))}
                     value={inputUsers}
                     placeholder='number'
                 />
@@ -56,7 +56,7 @@ export default function Sidebar({ filters, onFiltersChange }: SidebarProps) {
                 >
                     <option value="">All</option>
                     {nationalities.map((nation) => (
-                        <option key={nation.code}>
+                        <option key={nation.code} value={nation.code}>
                             {nation.country}
                         </option>
                     ))}
