@@ -11,9 +11,13 @@
     
 }
 .sidebarItems{
+    padding: 5px;
     display: flex; 
     flex-direction: column; 
+    gap: 5px;
+    max-width: 120px;
 }
+
 .content {
     flex-grow: 1;
     display: flex;
@@ -47,6 +51,7 @@ header {
 
 .onLoading {
     font-size: 24px;
+    font-style: bold;
     padding: 50px;
     text-align: center;
 }
@@ -99,4 +104,7 @@ footer {
 a {
     text-decoration: none;
     color: #a2d331;
+}
+ul {
+    list-style: none;
 }
