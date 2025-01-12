@@ -1,19 +1,21 @@
 .container {
     display: flex;
-    flex-direction:column;
+    flex-direction: column;
     height: 100vh;
+    cursor: default;
 }
 
 .sidebar {
     width: 200px;
     background: linear-gradient(0.5turn, #bdd31c63, #bdd31c63, #344018);
     padding: 20px;
-    
+
 }
-.sidebarItems{
+
+.sidebarItems {
     padding: 5px;
-    display: flex; 
-    flex-direction: column; 
+    display: flex;
+    flex-direction: column;
     gap: 5px;
     max-width: 120px;
 }
@@ -22,11 +24,16 @@
     flex-grow: 1;
     display: flex;
 }
-select{
+
+select:hover {
+    cursor:pointer;
+}
+select {
     background-color: rgb(163, 239, 163);
     color: #206b0d;
     text-align: center;
 }
+
 main {
     flex-grow: 1;
     background: linear-gradient(0.5turn, #bdd31c63, #bdd31c63, #344018);
@@ -67,11 +74,11 @@ section {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
+    gap: 10px;
     padding: 20px;
 }
 
-img{
+img {
     border-radius: 40%;
     border: 5px double greenyellow;
 }
@@ -81,15 +88,15 @@ article {
     border: 3px double black;
     background-color: floralwhite;
     width: 250px;
-    margin: 2px 10px;
-    padding: 20px 20px;
+    padding: 10px;
     border-radius: 6px;
-    box-shadow: green  5px 5px 10px;
+    box-shadow: green 5px 5px 10px;
     text-align: center;
 }
+
 article:hover {
-        transform: scale(1.1);
-    }
+    transform: scale(1.1);
+}
 
 img {
     filter: grayscale(.8);
@@ -101,10 +108,31 @@ footer {
     padding: 20px;
 }
 
+button:hover {
+    
+    cursor:pointer;
+}
+
+button{
+    border: 1px solid #206b0d;
+    padding: 10px;
+    margin: 1px;
+    background-color: rgb(163, 239, 163);
+    color: #206b0d;
+    text-align: center;
+    cursor:pointer; 
+}
+
+
+p {
+    margin: 10px;
+}
+
 a {
     text-decoration: none;
     color: #a2d331;
 }
+
 ul {
     list-style: none;
 }
