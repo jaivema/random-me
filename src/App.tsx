@@ -1,13 +1,14 @@
 import './App.css'
 import { useEffect, useState } from 'react'
 import Sidebar from './components/Sidebar'
+import type { User, Filters, ErrorState } from './types/user';
 
 function App() {
   const [numberUsers, setNumberUsers] = useState(4)
-  const [randomUsers, setRandomUsers] = useState([])
-  const [error, setError] = useState(null)
+  const [randomUsers, setRandomUsers] = useState<User[]>([])
+  const [error, setError] = useState<ErrorState>(null)
   const [isLoading, setIsLoading] = useState(true)
-  const [filters, setFilters] = useState({
+  const [filters, setFilters] = useState<Filters>({
     gender: "",
     nat: "",
   });
@@ -24,8 +25,11 @@ function App() {
       setRandomUsers(data.results)
       setError(null)
     } catch (error) {
-      console.error("Error fetching users:", error);
-      setError(`Failed to fetch response: ${error.message}`)
+      if (error instanceof Error) {
+        setError(`Failed to fetch response: ${error.message}`);
+      } else {
+        setError(`Failed to fetch response: ${String(error)}`);
+      }
       setRandomUsers([])
     } finally {
       setIsLoading(false);
@@ -40,7 +44,7 @@ function App() {
     <div className="container">
       <header>
         <h1>Random users generator</h1>
-        <input type="number" onChange={(e) => setNumberUsers(e.target.value)}
+        <input type="number" onChange={(e) => setNumberUsers(parseInt(e.target.value))}
           value={numberUsers}
           placeholder='number'
         />
@@ -53,7 +57,7 @@ function App() {
         <main>
           <section>
             {isLoading && <p className='onLoading'>Loading...</p>}
-            {error ? <p className='onError'><strong>{error}</strong></p> : randomUsers.map((user, index) => (
+            {error ? <p className='onError'><strong>{error}</strong></p> : randomUsers.map((user:User, index) => (
               <article key={user.login.uuid}>
                 <h3>{user.name.first} {user.name.last}</h3>
                 <img src={user.picture.medium} alt={`${user.name.first} ${user.name.last}`} />
