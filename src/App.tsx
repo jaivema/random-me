@@ -1,34 +1,46 @@
-import './App.css'
-import { useEffect, useState } from 'react'
-import Sidebar from './components/Sidebar'
-import type { User, Filters, ErrorState } from './types/user';
+import { useEffect, useState } from 'react';
+import './App.css';
+import Sidebar from './components/Sidebar';
+import type { ErrorState, Filters, User } from './types/user';
 
 function App() {
-  const [numberUsers, setNumberUsers] = useState(4)
   const [randomUsers, setRandomUsers] = useState<User[]>([])
-  const [error, setError] = useState<ErrorState>(null)
+  const [error, setError] = useState<ErrorState>({ error: null })
   const [isLoading, setIsLoading] = useState(true)
   const [filters, setFilters] = useState<Filters>({
+    numberUsers: 4,
     gender: "",
     nat: "",
   });
 
-  async function fetchRandomUsers() {
+/**
+ * Fetches random user profiles from the Random User Generator API based on the specified filters.
+ * Updates the state with the fetched user data or sets an error if the fetch fails.
+ *
+ * @async
+ * @function
+ * @returns {Promise<void>} A promise that resolves when the fetch operation is complete.
+ * @throws {Error} If the fetch operation fails, an error is caught and the error state is updated.
+ */
+  async function fetchRandomUsers(): Promise<void> {
     setIsLoading(true);
     try {
-      let url = `https://randomuser.me/api/?results=${numberUsers}`;
+      let url = `https://randomuser.me/api/?results=${filters.numberUsers}`;
       if (filters.gender) url += `&gender=${filters.gender}`;
       if (filters.nat) url += `&nat=${filters.nat}`;
 
       const response = await fetch(url)
       const data = await response.json()
       setRandomUsers(data.results)
-      setError(null)
+      setError({ error: null })
     } catch (error) {
       if (error instanceof Error) {
-        setError(`Failed to fetch response: ${error.message}`);
-      } else {
-        setError(`Failed to fetch response: ${String(error)}`);
+        setError({
+          error: {
+            message: error.message,
+            name: error.name || ''
+          }
+        });
       }
       setRandomUsers([])
     } finally {
@@ -37,36 +49,39 @@ function App() {
   }
 
   useEffect(() => {
+    setRandomUsers([])
     fetchRandomUsers()
+
   }, [filters])
 
   return (
     <div className="container">
       <header>
         <h1>Random users generator</h1>
-        <input type="number" onChange={(e) => setNumberUsers(parseInt(e.target.value))}
-          value={numberUsers}
-          placeholder='number'
-        />
-        <button type="button" onClick={fetchRandomUsers}>Submit &gt; </button>
       </header>
       <div className="content">
         <aside className="sidebar">
-          <Sidebar filters={filters} setFilters={setFilters} />
+          <Sidebar filters={filters} onFiltersChange={setFilters} />
         </aside>
         <main>
           <section>
             {isLoading && <p className='onLoading'>Loading...</p>}
-            {error ? <p className='onError'><strong>{error}</strong></p> : randomUsers.map((user:User, index) => (
-              <article key={user.login.uuid}>
-                <h3>{user.name.first} {user.name.last}</h3>
-                <img src={user.picture.medium} alt={`${user.name.first} ${user.name.last}`} />
-                <p>Country: {user.location.country} {user.nat}</p>
-                <p>State: {user.location.state}</p>
-                <p>City: {user.location.city}</p>
-                <p>Email: {user.email}</p>
-              </article>
-            ))}
+            {error.error ?
+              <ul className='onError'>
+                <li><strong>{error.error.message}</strong></li>
+                <li><strong>Name:</strong> {error.error.name}</li>
+                <li><strong>Message:</strong> {error.error.message}</li>
+              </ul>
+              : randomUsers.map((user: User, index) => (
+                <article key={index}>
+                  <h3>{user.name.first} {user.name.last}</h3>
+                  <img src={user.picture.medium} alt={`${user.name.first} ${user.name.last}`} />
+                  <p>Country: {user.location.country} {user.nat}</p>
+                  <p>State: {user.location.state}</p>
+                  <p>City: {user.location.city}</p>
+                  <p>Email: {user.email}</p>
+                </article>
+              ))}
           </section>
         </main>
       </div>
