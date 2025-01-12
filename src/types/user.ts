@@ -30,11 +30,12 @@ export interface User {
   nat: string;
 }
 
-export interface Filters {
-  numberUsers: number;
-  gender: string;
-  nat: string;
+export const initFilters={
+  numberUsers: 4,
+  gender: "",
+  nat: "",
 }
+export type Filters = typeof initFilters;
 
 export type ErrorState = {
   error: {

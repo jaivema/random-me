@@ -1,18 +1,14 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import Sidebar from './components/Sidebar';
-import type { ErrorState, Filters, User } from './types/user';
+import { ErrorState, Filters, initFilters, User } from './types/user';
 
 function App() {
   const [randomUsers, setRandomUsers] = useState<User[]>([])
   const [error, setError] = useState<ErrorState>({ error: null })
   const [isLoading, setIsLoading] = useState(true)
-  const [filters, setFilters] = useState<Filters>({
-    numberUsers: 4,
-    gender: "",
-    nat: "",
-  });
-
+  const [filters, setFilters] = useState<Filters>(initFilters)
+  
 /**
  * Fetches random user profiles from the Random User Generator API based on the specified filters.
  * Updates the state with the fetched user data or sets an error if the fetch fails.
