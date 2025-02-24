@@ -3,6 +3,7 @@
     flex-direction: column;
     height: 100vh;
     cursor: default;
+    min-width: 100%;
 }
 
 .sidebar {
@@ -26,8 +27,9 @@
 }
 
 select:hover {
-    cursor:pointer;
+    cursor: pointer;
 }
+
 select {
     background-color: rgb(163, 239, 163);
     color: #206b0d;
@@ -46,6 +48,7 @@ header {
     text-align: center;
     padding: 10px;
     text-shadow: 5px 5px 10px black;
+    width: 100%;
 }
 
 .onError {
@@ -103,27 +106,26 @@ img {
 }
 
 footer {
-    text-align: center  ;
+    text-align: center;
     background: linear-gradient(0.5turn, #344018, #000000, #5e63339e);
     color: white;
     padding: 20px;
+    width: 100%;
 }
 
 button:hover {
-    
-    cursor:pointer;
+    cursor: pointer;
 }
 
-button{
+button {
     border: 1px solid #206b0d;
     padding: 10px;
     margin: 1px;
     background-color: rgb(163, 239, 163);
     color: #206b0d;
     text-align: center;
-    cursor:pointer; 
+    cursor: pointer;
 }
-
 
 p {
     margin: 10px;
@@ -136,4 +138,10 @@ a {
 
 ul {
     list-style: none;
+}
+
+@media (max-width: 414px) {
+    .container {
+        width: 414px;
+    }
 }

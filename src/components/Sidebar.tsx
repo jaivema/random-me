@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Filters } from "../types/user";
+import { Filters, initFilters } from "../types/user";
 import { nationalities } from "../data/nat-codes";
 
 interface SidebarProps {
@@ -31,8 +31,7 @@ export default function Sidebar({ filters, onFiltersChange }: SidebarProps) {
                     value={inputUsers}
                     placeholder='number'
                 />
-                <button type="button" onClick={handleSubmit} >Submit &gt; </button>
-
+                <button type="button" onClick={handleSubmit} >Submit</button>
                 <label>
                     Gender
                 </label>
@@ -45,7 +44,6 @@ export default function Sidebar({ filters, onFiltersChange }: SidebarProps) {
                     <option value="female">Female</option>
                     <option value="male">Male</option>
                 </select>
-
                 <label>
                     Country
                 </label>
@@ -53,7 +51,7 @@ export default function Sidebar({ filters, onFiltersChange }: SidebarProps) {
                     name="nat"
                     value={filters.nat}
                     onChange={(e) => onFiltersChange({ ...filters, nat: e.target.value })}
-                >
+                    >
                     <option value="">All</option>
                     {nationalities.map((nation) => (
                         <option key={nation.code} value={nation.code}>
@@ -61,6 +59,7 @@ export default function Sidebar({ filters, onFiltersChange }: SidebarProps) {
                         </option>
                     ))}
                 </select>
+                <button type="button" onClick={() => onFiltersChange(initFilters)}>Clear</button>
             </div>
         </>
     )
