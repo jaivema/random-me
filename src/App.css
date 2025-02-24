@@ -1,3 +1,8 @@
+body {
+    margin: 0 auto;
+    
+}
+
 .container {
     display: flex;
     flex-direction: column;
@@ -7,10 +12,9 @@
 }
 
 .sidebar {
-    width: 200px;
+    width: 130px;
     background: linear-gradient(0.5turn, #bdd31c63, #bdd31c63, #344018);
     padding: 20px;
-
 }
 
 .sidebarItems {
@@ -75,10 +79,11 @@ input {
 
 section {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap:wrap; 
     justify-content: center;
     gap: 10px;
     padding: 20px;
+    width: 100wv;
 }
 
 img {
