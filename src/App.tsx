@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import Sidebar from './components/Sidebar';
+import UserModalCard from './components/UserModalCard';
 import { ErrorState, Filters, initFilters, User } from './types/user';
 
 function App() {
@@ -8,16 +9,8 @@ function App() {
   const [error, setError] = useState<ErrorState>({ error: null })
   const [isLoading, setIsLoading] = useState(true)
   const [filters, setFilters] = useState<Filters>(initFilters)
-  
-/**
- * Fetches random user profiles from the Random User Generator API based on the specified filters.
- * Updates the state with the fetched user data or sets an error if the fetch fails.
- *
- * @async
- * @function
- * @returns {Promise<void>} A promise that resolves when the fetch operation is complete.
- * @throws {Error} If the fetch operation fails, an error is caught and the error state is updated.
- */
+  const [selectedUser, setSelectedUser] = useState<User | null>(null)
+
   async function fetchRandomUsers(): Promise<void> {
     setIsLoading(true);
     try {
@@ -47,7 +40,6 @@ function App() {
   useEffect(() => {
     setRandomUsers([])
     fetchRandomUsers()
-
   }, [filters])
 
   return (
@@ -92,6 +84,12 @@ function App() {
           for more information regarding how you can use these faces.
         </p>
       </footer>
+      {selectedUser && (
+        <UserModalCard 
+          user={selectedUser} 
+          onClose={() => setSelectedUser(null)} 
+        />
+      )}
     </div>
   )
 }
