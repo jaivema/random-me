@@ -3,6 +3,7 @@ import './App.css';
 import Sidebar from './components/Sidebar';
 import UserModalCard from './components/UserModalCard';
 import { ErrorState, Filters, initFilters, User } from './types/user';
+import UserCard from './components/UserCard';
 
 function App() {
   const [randomUsers, setRandomUsers] = useState<User[]>([])
@@ -61,15 +62,7 @@ function App() {
                 <li><strong>Message:</strong> {error.error.message}</li>
               </ul>
               : randomUsers.map((user: User, index) => (
-                <article key={index}>
-                  <h3>{user.name.first} {user.name.last}</h3>
-                  <img src={user.picture.medium} alt={`${user.name.first} ${user.name.last}`} />
-                  <p>Country: {user.location.country}</p>
-                  <p>State: {user.location.state}</p>
-                  <p>City: {user.location.city}</p>
-                  <p>Email: {user.email}</p>
-                  <p>Nationality: {user.nat}</p>
-                </article>
+                <UserCard key={index} user={user} onClick={() => setSelectedUser(user)} />
               ))}
           </section>
         </main>
