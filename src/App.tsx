@@ -77,12 +77,12 @@ function App() {
           for more information regarding how you can use these faces.
         </p>
       </footer>
-      {selectedUser && (
-        <UserModalCard 
-          user={selectedUser} 
-          onClose={() => setSelectedUser(null)} 
-        />
-      )}
+        {selectedUser && (
+          <UserModalCard
+            user={selectedUser}
+            onClose={() => setSelectedUser(null)}
+          />
+        )}
     </div>
   )
 }
