@@ -40,7 +40,9 @@ npm run dev
 - React
 - React Hooks (useState, useEffect)
 - Random User Generator API
-
+- lucide-react
+- types/node. TypeScript definitions for react.
+- 
 ## API Information
 
 This application uses the Random User Generator API:
