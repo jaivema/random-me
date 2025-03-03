@@ -30,17 +30,32 @@ export interface User {
   nat: string;
 }
 
-export const initFilters={
-  numberUsers: 4,
+export const initFilters = {
+  numberUsers: 5,
   gender: "",
   nat: "",
 }
 export type Filters = typeof initFilters;
 
+export const initPagination = {
+  seed: "",
+  results: 1,
+  page: 1,
+  version: ""
+}
+export type PaginationState = typeof initPagination
+
+export type Paginator = {
+  seed: string,
+  results: number,
+  page: number,
+  version: string
+}
+
 export type ErrorState = {
   error: {
     message: string;
     name: string;
-  } 
+  }
   | null;
 };
