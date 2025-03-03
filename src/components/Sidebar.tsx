@@ -12,9 +12,13 @@ export default function Sidebar({ filters, onFiltersChange }: SidebarProps) {
     const [inputUsers, setInputUsers] = useState<number>(filters.numberUsers);
 
     const handleSubmit = () => {
-        const numResults = Number(inputUsers);
-        onFiltersChange({ ...filters, numberUsers: numResults });
+        onFiltersChange({ ...filters, numberUsers: inputUsers });
     };
+
+    const handleClear =()=>{
+        setInputUsers(initFilters.numberUsers)
+        onFiltersChange({ ...filters, numberUsers: initFilters.numberUsers, gender: initFilters.gender, nat: initFilters.nat });
+    }
     return (
         <>
             <article className="sidebarItems">
@@ -60,7 +64,7 @@ export default function Sidebar({ filters, onFiltersChange }: SidebarProps) {
                         </option>
                     ))}
                 </select>
-                <button type="button" onClick={() => onFiltersChange(initFilters)}>Clear</button>
+                <button type="button" onClick={() => handleClear()}>Reset</button>
             </article>
         </>
     )

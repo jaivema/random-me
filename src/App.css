@@ -78,7 +78,6 @@ header {
 .onLoading {
     font-size: 42px;
     font-style: bold;
-    text-align: center;
 }
 
 input {
@@ -188,9 +187,14 @@ footer {
 }
 #paginator-section{
     display: flex;
-    justify-content: space-around;
+    justify-content: end;
+    margin: 4%;
+    overflow:hidden;
+    min-height:35px;
+    max-height:35px;
 }
 .paginator-info{
+    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -201,6 +205,8 @@ button:hover {
     color:#daf7c4;
 }
 .paginator-buttons{
+    background-color: transparent;
+    color: floralwhite;
     display: flex;
     justify-content: space-evenly;
     text-align: center;

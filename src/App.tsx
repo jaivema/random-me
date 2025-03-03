@@ -53,7 +53,6 @@ function App() {
     <div className="container">
       <header>
         <h1>Random users generator</h1>
-            {isLoading && <p className='onLoading'>Loading...</p>}
       </header>
       <div className="content">
         <aside className="sidebar">
@@ -61,6 +60,7 @@ function App() {
         </aside>
         <main>
           <section id="random-users">
+            {isLoading && <p className='onLoading'>Loading...</p>}
             {error.error ?
               <ul className='onError'>
                 <li><strong>{error.error.message}</strong></li>
@@ -71,7 +71,7 @@ function App() {
                 <UserCard key={index} user={user} onClick={() => setSelectedUser(user)} />
               ))}
           </section>
-          <div>
+          <div id="paginator-section">
             {randomUsers.length > 1 ? <Pagination pagination={pagination} onChangePage={handlePageChange}/> : null}
           </div>
         </main>
