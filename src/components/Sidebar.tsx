@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Filters, initFilters } from "../types/user";
 import { nationalities } from "../data/nat-codes";
+import { increment, decrement } from "../utils/customNumberInput";
 
 interface SidebarProps {
     filters: Filters;
@@ -8,7 +9,6 @@ interface SidebarProps {
 }
 
 export default function Sidebar({ filters, onFiltersChange }: SidebarProps) {
-
     const [inputUsers, setInputUsers] = useState<number>(filters.numberUsers);
 
     const handleSubmit = () => {
@@ -17,13 +17,21 @@ export default function Sidebar({ filters, onFiltersChange }: SidebarProps) {
     };
     return (
         <>
-            <div className="sidebarItems">
+            <article className="sidebarItems">
                 <h2>Filters</h2>
-                <label>Number of users</label>
-                <input type="number" min="1" onChange={(e) => setInputUsers(parseInt(e.target.value))}
-                    value={inputUsers}
-                    placeholder='number'
-                />
+                <label>Users per page</label>
+                <div className="custom-number">
+                    <div>
+                        <input onChange={(e) => setInputUsers(parseInt(e.target.value))}
+                            type="number" id="customInput" min="1" autoFocus
+                            value={inputUsers}>
+                        </input>
+                    </div>
+                    <div className="custom-number-buttons">
+                        <button onClick={ () => increment(setInputUsers) }>+</button>
+                        <button onClick={ () => decrement(setInputUsers) }>-</button>
+                    </div>
+                </div>
                 <button type="button" onClick={handleSubmit} >Submit</button>
                 <label>
                     Gender
@@ -44,7 +52,7 @@ export default function Sidebar({ filters, onFiltersChange }: SidebarProps) {
                     name="nat"
                     value={filters.nat}
                     onChange={(e) => onFiltersChange({ ...filters, nat: e.target.value })}
-                    >
+                >
                     <option value="">All</option>
                     {nationalities.map((nation) => (
                         <option key={nation.code} value={nation.code}>
@@ -53,7 +61,7 @@ export default function Sidebar({ filters, onFiltersChange }: SidebarProps) {
                     ))}
                 </select>
                 <button type="button" onClick={() => onFiltersChange(initFilters)}>Clear</button>
-            </div>
+            </article>
         </>
     )
 }
