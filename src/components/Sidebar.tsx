@@ -7,13 +7,6 @@ interface SidebarProps {
     onFiltersChange: (filters: Filters) => void;
 }
 
-/**
- * Sidebar component containing filters for random user generator
- * 
- * @param filters - the current filters, which will be updated by the component
- * @param onFiltersChange - a callback function to be called when the filters change
- * @returns a JSX element containing the filters
- */
 export default function Sidebar({ filters, onFiltersChange }: SidebarProps) {
 
     const [inputUsers, setInputUsers] = useState<number>(filters.numberUsers);
