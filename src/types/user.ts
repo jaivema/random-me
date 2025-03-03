@@ -34,6 +34,7 @@ export const initFilters = {
   numberUsers: 11,
   gender: "",
   nat: "",
+  seed: ""
 }
 export type Filters = typeof initFilters;
 

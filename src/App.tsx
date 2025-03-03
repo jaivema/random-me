@@ -1,10 +1,7 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
-import Sidebar from './components/Sidebar';
-import UserModalCard from './components/UserModalCard';
+import {Sidebar, UserCard, UserModalCard, Pagination} from './components';
 import { ErrorState, Filters, initFilters, PaginationState, initPagination, User } from './types/user';
-import UserCard from './components/UserCard';
-import Pagination from './components/Pagination';
 
 function App() {
   const [randomUsers, setRandomUsers] = useState<User[]>([])
@@ -17,7 +14,7 @@ function App() {
   async function fetchRandomUsers(): Promise<void> {
     setIsLoading(true);
     try {
-      let url = `https://randomuser.me/api/?results=${filters.numberUsers}&page=${pagination.page}`;
+      let url = `https://randomuser.me/api/?seed=foobar&results=${filters.numberUsers}&page=${pagination.page}`;
       if (filters.gender) url += `&gender=${filters.gender}`;
       if (filters.nat) url += `&nat=${filters.nat}`;
       const response = await fetch(url)
@@ -84,7 +81,7 @@ function App() {
       </div>
       <footer>
         <h3>Powered by <a href="https://randomuser.me">https://randomuser.me</a></h3>
-        <h4>Copyright Notice</h4>
+        <p>Copyright Notice @2024</p>
         <p>
           All randomly generated photos were hand picked from the authorized section of
           <a href="http://uifaces.com"> UI Faces</a>. Please visit
