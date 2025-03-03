@@ -12,15 +12,14 @@ export default function UserModalCard({ user, onClose }: UserModalProps) {
       <div>
         <article className="userDetails">
           <div className="userDetailsHeader">
-
-            <h1>{user.name.title}. {user.name.first} {user.name.last}</h1>
+            <h1>{user.name.first} {user.name.last}</h1>
             <button className="closeButton"
               onClick={onClose}
             >
               <X size={30} />
             </button>
           </div>
-          <img src={user.picture.large} alt={`${user.name.first} ${user.name.last}`} width="100" height="100" />
+          <img src={user.picture.large} alt={`${user.name.first} ${user.name.last}`} width="300" height="300" />
           <span>{user.nat}</span>
           <div>
             <p>Email: {user.email}</p>

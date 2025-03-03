@@ -19,7 +19,7 @@ html {
 .sidebar {
     width: 130px;
     background: linear-gradient(0.5turn, #bdd31c63, #bdd31c63, #344018);
-    padding: 20px;
+    padding: 50px;
 }
 
 .sidebarItems {
@@ -33,17 +33,18 @@ html {
 .content {
     flex-grow: 1;
     display: flex;
-    
     overflow:hidden;
 }
 
 select:hover {
     cursor: pointer;
 }
+
 #randomm-users{
     flex:1;
     overflow-y:auto;
 }
+
 select {
     background-color: rgb(163, 239, 163);
     color: #206b0d;
@@ -77,7 +78,7 @@ header {
 
 .onLoading {
     font-size: 42px;
-    font-style: bold;
+    padding: 100px;
 }
 
 input {
@@ -133,7 +134,7 @@ article {
     transition: transform 0.3s ease;
     border: 3px double black;
     background-color: floralwhite;
-    width: 250px;
+    width: 200px;
     padding: 10px;
     border-radius: 6px;
     box-shadow: green 5px 5px 10px;
@@ -160,7 +161,12 @@ article {
 
 .userDetailsHeader {
     display: flex;
-    justify-content: space-between;
+    justify-content: right;
+    align-items: center;
+    & h1 {
+        flex: 1;
+        align-self: center;
+    }
 }
 
 .userCardModal {
@@ -200,17 +206,19 @@ footer {
     min-height:35px;
     max-height:35px;
 }
+
 .paginator-info{
-    
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
 button:hover {
     cursor: pointer;
     background: #218e1a;
     color:#daf7c4;
 }
+
 .paginator-buttons{
     background-color: transparent;
     color: floralwhite;
@@ -220,10 +228,12 @@ button:hover {
     align-items: center;
 
 }
+
 .paginator-buttons button{
     height: 50px;
     width: 30%;
 }
+
 button {
     border: 1px solid #206b0d;
     padding: 10px;
@@ -233,6 +243,7 @@ button {
     text-align: center;
     cursor: pointer;
 }
+
 button[disabled]{
     display:none;
 }
