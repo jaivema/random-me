@@ -1,11 +1,4 @@
-#paginator-section{
-    display: flex;
-    justify-content: end;
-    margin: 4%;
-    overflow:hidden;
-    min-height:35px;
-    max-height:35px;
-}
+
 
 .paginator-info{
     display: flex;
@@ -26,7 +19,6 @@ button:hover {
     justify-content: space-evenly;
     text-align: center;
     align-items: center;
-
 }
 
 .paginator-buttons button{

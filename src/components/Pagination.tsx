@@ -9,6 +9,7 @@ const Pagination = ({ pagination, onChangePage }: PaginationProps) => {
     const handlePrevius = () => { if (pagination.page > 1) onChangePage(pagination.page - 1) };
     const handleNext = () => { onChangePage(pagination.page + 1) };
     return (
+        <>
         <article className="paginator-buttons">
             <span>
                 Page {pagination.page}
@@ -16,7 +17,12 @@ const Pagination = ({ pagination, onChangePage }: PaginationProps) => {
             <button onClick={handlePrevius} disabled={pagination.page <= 1}>Previus</button>
             <button onClick={handleNext}>Next</button>
         </article>
-
+        <div>
+            <p>
+                Seed {pagination.seed}
+            </p>
+        </div>
+        </>
     )
 }
 export default Pagination;

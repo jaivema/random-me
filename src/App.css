@@ -29,3 +29,11 @@
     font-size: 42px;
     padding: 100px;
 }
+
+#paginator-section{
+    display: flex;
+    justify-content: end;
+    margin: 4%;
+    min-height:35px;
+    max-height:35px;
+}

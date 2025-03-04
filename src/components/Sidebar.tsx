@@ -7,10 +7,17 @@ import "./styles/Sidebar.css";
 interface SidebarProps {
     filters: Filters;
     onFiltersChange: (filters: Filters) => void;
+    randomSeed: string;
+    newSeed: () => void;
 }
 
-export default function Sidebar({ filters, onFiltersChange }: SidebarProps) {
+export default function Sidebar({ filters, onFiltersChange, randomSeed, newSeed }: SidebarProps) {
     const [inputUsers, setInputUsers] = useState<number>(filters.numberUsers);
+    const [seedList, setSeedList] = useState<string[]>([]);
+
+    const addSeed = (randomSeed: string) => {
+        if (!seedList.includes(randomSeed)) setSeedList([...seedList, randomSeed]);
+    }
 
     const handleSubmit = () => {
         onFiltersChange({ ...filters, numberUsers: inputUsers });
@@ -38,27 +45,21 @@ export default function Sidebar({ filters, onFiltersChange }: SidebarProps) {
                     </div>
                 </div>
                 <button type="button" onClick={handleSubmit} >Submit</button>
-                <label>
-                    Gender
-                </label>
                 <select
                     name="gender"
                     value={filters.gender}
                     onChange={(e) => onFiltersChange({ ...filters, gender: e.target.value })}
                 >
-                    <option value="">All</option>
+                    <option value="">Gender</option>
                     <option value="female">Female</option>
                     <option value="male">Male</option>
                 </select>
-                <label>
-                    Country
-                </label>
                 <select
                     name="nat"
                     value={filters.nat}
                     onChange={(e) => onFiltersChange({ ...filters, nat: e.target.value })}
                 >
-                    <option value="">All</option>
+                    <option value="">Country</option>
                     {nationalities.map((nation) => (
                         <option key={nation.code} value={nation.code}>
                             {nation.country}
@@ -66,6 +67,24 @@ export default function Sidebar({ filters, onFiltersChange }: SidebarProps) {
                     ))}
                 </select>
                 <button type="button" onClick={() => handleClear()}>Reset</button>
+                <label>Seeds</label>
+                <button type="button" onClick={() => newSeed()}>Generate seed</button>
+                <button type="button" onClick={() => addSeed(randomSeed)}>Add seed</button>
+                <select
+                    name="seed"
+                    value={randomSeed}
+                    onChange={(e) => onFiltersChange({ ...filters, seed: e.target.value })}
+                >
+                    <option value="">Select</option>
+                    {seedList.map((seed, index) => (
+                        <option key={index} value={seed}>{seed}</option>
+                    ))}
+                    </select>
+                <ul>
+                    {seedList.map((seed, index) => (
+                        <li key={index}>{seed}</li>
+                    ))}
+                </ul>
             </article>
         </>
     )

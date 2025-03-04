@@ -57,6 +57,5 @@ export type ErrorState = {
   error: {
     message: string;
     name: string;
-  }
-  | null;
+  } | null;
 };
