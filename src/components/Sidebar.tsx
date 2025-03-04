@@ -8,10 +8,10 @@ interface SidebarProps {
     filters: Filters;
     onFiltersChange: (filters: Filters) => void;
     randomSeed: string;
-    newSeed: () => void;
+    generateNewSeed: () => void;
 }
 
-export default function Sidebar({ filters, onFiltersChange, randomSeed, newSeed }: SidebarProps) {
+export default function Sidebar({ filters, onFiltersChange, randomSeed, generateNewSeed }: SidebarProps) {
     const [inputUsers, setInputUsers] = useState<number>(filters.numberUsers);
     const [seedList, setSeedList] = useState<string[]>([]);
 
@@ -23,7 +23,7 @@ export default function Sidebar({ filters, onFiltersChange, randomSeed, newSeed 
         onFiltersChange({ ...filters, numberUsers: inputUsers });
     };
 
-    const handleClear =()=>{
+    const handleClear = () => {
         setInputUsers(initFilters.numberUsers)
         onFiltersChange({ ...filters, numberUsers: initFilters.numberUsers, gender: initFilters.gender, nat: initFilters.nat });
     }
@@ -40,8 +40,8 @@ export default function Sidebar({ filters, onFiltersChange, randomSeed, newSeed 
                         </input>
                     </div>
                     <div className="custom-number-buttons">
-                        <button onClick={ () => increment(setInputUsers) }>+</button>
-                        <button onClick={ () => decrement(setInputUsers) }>-</button>
+                        <button onClick={() => increment(setInputUsers)}>+</button>
+                        <button onClick={() => decrement(setInputUsers)}>-</button>
                     </div>
                 </div>
                 <button type="button" onClick={handleSubmit} >Submit</button>
@@ -68,7 +68,7 @@ export default function Sidebar({ filters, onFiltersChange, randomSeed, newSeed 
                 </select>
                 <button type="button" onClick={() => handleClear()}>Reset</button>
                 <label>Seeds</label>
-                <button type="button" onClick={() => newSeed()}>Generate seed</button>
+                <button type="button" onClick={() => generateNewSeed()}>Generate seed</button>
                 <button type="button" onClick={() => addSeed(randomSeed)}>Add seed</button>
                 <select
                     name="seed"
@@ -79,12 +79,7 @@ export default function Sidebar({ filters, onFiltersChange, randomSeed, newSeed 
                     {seedList.map((seed, index) => (
                         <option key={index} value={seed}>{seed}</option>
                     ))}
-                    </select>
-                <ul>
-                    {seedList.map((seed, index) => (
-                        <li key={index}>{seed}</li>
-                    ))}
-                </ul>
+                </select>
             </article>
         </>
     )

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import './App.css';
-import {Sidebar, UserCard, UserModalCard, Pagination} from './components';
+import { Sidebar, UserCard, UserModalCard, Pagination } from './components';
 import { ErrorState, Filters, initFilters, PaginationState, initPagination, User } from './types/user';
 
 function App() {
@@ -41,13 +41,13 @@ function App() {
     }
   }
 
-  const handlePageChange = (page: number)=>{
-    setPagination({...pagination, page})
+  const handlePageChange = (page: number) => {
+    setPagination({ ...pagination, page })
   }
 
-  const newSeed=()=> {
+  const generateNewSeed = () => {
     randomSeed.current = ""
-    setFilters(filters.seed ? {...filters, seed: ""} : initFilters)
+    setFilters(filters.seed ? { ...filters, seed: "" } : initFilters)
     setRandomUsers([])
     fetchRandomUsers()
     setPagination(initPagination)
@@ -65,7 +65,7 @@ function App() {
       </header>
       <div className="content">
         <aside className="sidebar">
-          <Sidebar filters={filters} onFiltersChange={setFilters} randomSeed={randomSeed.current} newSeed={newSeed} />
+          <Sidebar filters={filters} onFiltersChange={setFilters} randomSeed={randomSeed.current} generateNewSeed={generateNewSeed} />
         </aside>
         <main>
           <section id="random-users">
@@ -81,7 +81,7 @@ function App() {
               ))}
           </section>
           <div id="paginator-section">
-            {randomUsers.length > 1 ? <Pagination pagination={pagination} onChangePage={handlePageChange}/> : null}
+            {randomUsers.length > 1 ? <Pagination pagination={pagination} onChangePage={handlePageChange} /> : null}
           </div>
         </main>
         {selectedUser && (
