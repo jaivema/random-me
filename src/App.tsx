@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import './App.css';
 import {Sidebar, UserCard, UserModalCard, Pagination} from './components';
 import { ErrorState, Filters, initFilters, PaginationState, initPagination, User } from './types/user';
+import { generateRandomSeed } from './utils/randomSeedList';
 
 function App() {
   const [randomUsers, setRandomUsers] = useState<User[]>([])
@@ -10,11 +11,12 @@ function App() {
   const [filters, setFilters] = useState<Filters>(initFilters)
   const [selectedUser, setSelectedUser] = useState<User | null>(null)
   const [pagination, setPagination] = useState<PaginationState>(initPagination)
+  const randomSeedList = useRef("foobar")
 
   async function fetchRandomUsers(): Promise<void> {
     setIsLoading(true);
     try {
-      let url = `https://randomuser.me/api/?seed=foobar&results=${filters.numberUsers}&page=${pagination.page}`;
+      let url = `https://randomuser.me/api/?seed=${randomSeedList}&results=${filters.numberUsers}&page=${pagination.page}`;
       if (filters.gender) url += `&gender=${filters.gender}`;
       if (filters.nat) url += `&nat=${filters.nat}`;
       const response = await fetch(url)
@@ -41,6 +43,10 @@ function App() {
     setPagination({...pagination, page})
   }
 
+  useEffect(() => {
+    randomSeedList.current = generateRandomSeed();
+  },[]);
+  
   useEffect(() => {
     setRandomUsers([])
     fetchRandomUsers()

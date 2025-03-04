@@ -1,0 +1,35 @@
+#paginator-section{
+    display: flex;
+    justify-content: end;
+    margin: 4%;
+    overflow:hidden;
+    min-height:35px;
+    max-height:35px;
+}
+
+.paginator-info{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button:hover {
+    cursor: pointer;
+    background: #218e1a;
+    color:#daf7c4;
+}
+
+.paginator-buttons{
+    background-color: transparent;
+    color: floralwhite;
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+    align-items: center;
+
+}
+
+.paginator-buttons button{
+    height: 50px;
+    width: 30%;
+}

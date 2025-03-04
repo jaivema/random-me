@@ -1,5 +1,6 @@
 import { X } from "lucide-react";
 import type { User } from "../types/user";
+import "./styles/UserModalCard.css";
 
 interface UserModalProps {
   user: User;

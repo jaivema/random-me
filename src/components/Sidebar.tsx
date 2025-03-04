@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Filters, initFilters } from "../types/user";
 import { nationalities } from "../data/nat-codes";
 import { increment, decrement } from "../utils/customNumberInput";
+import "./styles/Sidebar.css";
 
 interface SidebarProps {
     filters: Filters;

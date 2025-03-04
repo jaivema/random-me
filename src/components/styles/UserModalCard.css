@@ -1,0 +1,33 @@
+.userDetails {
+    width: 100%;
+    height: 100%;
+}
+
+.userDetailsHeader {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    & h1 {
+        flex: 1;
+        align-self: center;
+    }
+}
+
+.userCardModal {
+    position: fixed;
+    background-color: #12121272;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    top: 0px;
+}
+
+.closeButton {
+    display: flex;
+    position: relative;
+    border: none;
+    background-color: transparent;
+    color: #206b0d;
+}

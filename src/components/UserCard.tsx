@@ -1,4 +1,5 @@
 import { User } from "../types/user";
+import "./styles/UserCard.css"
 
 interface UserCardProps {
     user: User
