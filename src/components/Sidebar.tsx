@@ -14,6 +14,7 @@ interface SidebarProps {
 export default function Sidebar({ filters, onFiltersChange, randomSeed, generateNewSeed }: SidebarProps) {
     const [inputUsers, setInputUsers] = useState<number>(filters.numberUsers);
     const [seedList, setSeedList] = useState<string[]>([]);
+    const [tempFilters, setTempFilters] = useState({ gender: filters.gender, nat: filters.nat });
 
     const addSeed = (randomSeed: string) => {
         if (!seedList.includes(randomSeed)) setSeedList([...seedList, randomSeed]);
@@ -25,12 +26,13 @@ export default function Sidebar({ filters, onFiltersChange, randomSeed, generate
     }
 
     const handleSubmit = () => {
-        onFiltersChange({ ...filters, numberUsers: inputUsers });
+        onFiltersChange({ ...filters, numberUsers: inputUsers, gender: tempFilters.gender, nat: tempFilters.nat });
     };
 
     const handleClear = () => {
         setInputUsers(initFilters.numberUsers)
         onFiltersChange({ ...filters, numberUsers: initFilters.numberUsers, gender: initFilters.gender, nat: initFilters.nat });
+        setTempFilters({ gender: initFilters.gender, nat: initFilters.nat });
     }
     return (
         <>
@@ -49,11 +51,10 @@ export default function Sidebar({ filters, onFiltersChange, randomSeed, generate
                         <button onClick={() => decrement(setInputUsers)}>-</button>
                     </div>
                 </div>
-                <button type="button" onClick={handleSubmit} >Submit</button>
                 <select
                     name="gender"
-                    value={filters.gender}
-                    onChange={(e) => onFiltersChange({ ...filters, gender: e.target.value })}
+                    value={tempFilters.gender}
+                    onChange={(e) => setTempFilters({ ...tempFilters, gender: e.target.value })}
                 >
                     <option value="">Gender</option>
                     <option value="female">Female</option>
@@ -61,8 +62,8 @@ export default function Sidebar({ filters, onFiltersChange, randomSeed, generate
                 </select>
                 <select
                     name="nat"
-                    value={filters.nat}
-                    onChange={(e) => onFiltersChange({ ...filters, nat: e.target.value })}
+                    value={tempFilters.nat}
+                    onChange={(e) => setTempFilters({ ...tempFilters, nat: e.target.value })}
                 >
                     <option value="">Country</option>
                     {nationalities.map((nation) => (
@@ -71,6 +72,7 @@ export default function Sidebar({ filters, onFiltersChange, randomSeed, generate
                         </option>
                     ))}
                 </select>
+                <button type="button" onClick={handleSubmit} >Submit</button>
                 <button type="button" onClick={() => handleClear()}>Reset</button>
                 <label>Seeds</label>
                 <button type="button" onClick={() => generateNewSeed()}>Generate seed</button>
