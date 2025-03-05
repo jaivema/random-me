@@ -18,8 +18,8 @@ function App() {
       let url = `https://randomuser.me/api/?results=${filters.numberUsers}&page=${pagination.page}`;
       if (filters.gender) url += `&gender=${filters.gender}`;
       if (filters.nat) url += `&nat=${filters.nat}`;
-      if (filters.seed) url += `&seed=${filters.seed}`; else if (randomSeed.current) url += `&seed=${randomSeed.current}`;
-      console.log(url)
+      if (filters.seed) url += `&seed=${filters.seed}`; 
+      
       const response = await fetch(url)
       const data = await response.json()
       setRandomUsers(data.results)
@@ -47,13 +47,11 @@ function App() {
 
   const generateNewSeed = () => {
     randomSeed.current = ""
-    setFilters(filters.seed ? { ...filters, seed: "" } : initFilters)
-    setRandomUsers([])
-    fetchRandomUsers()
+    setFilters({ ...filters, numberUsers: initFilters.numberUsers, gender: initFilters.gender, nat: initFilters.nat,seed: initFilters.seed })
     setPagination(initPagination)
   }
 
-  useEffect(() => {
+  const order = useEffect(() => {
     setRandomUsers([])
     fetchRandomUsers()
   }, [filters, pagination.page]);

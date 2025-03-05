@@ -9,7 +9,7 @@ interface UserCardProps {
 const UserCard = ({ user, onClick }: UserCardProps) => {
     return (
         <article className="userCard" onClick={onClick}>
-            <h3>{user.name.first} {user.name.last}</h3>
+            <h3>{user.name.title} {user.name.first} {user.name.last}</h3>
             <img src={user.picture.medium} alt={`${user.name.first} ${user.name.last}`} />
             <p>Country: {user.location.country}</p>
             <p>State: {user.location.state}</p>

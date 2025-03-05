@@ -34,7 +34,7 @@ export const initFilters = {
   numberUsers: 11,
   gender: "",
   nat: "",
-  seed: ""
+  seed: "",
 }
 export type Filters = typeof initFilters;
 
@@ -42,15 +42,15 @@ export const initPagination = {
   seed: "",
   results: 1,
   page: 1,
-  version: ""
+  version: "",
 }
 export type PaginationState = typeof initPagination
 
 export type Paginator = {
-  seed: string,
-  results: number,
-  page: number,
-  version: string
+  seed: string;
+  results: number;
+  page: number;
+  version: string;
 }
 
 export type ErrorState = {

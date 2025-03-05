@@ -18,6 +18,11 @@ export default function Sidebar({ filters, onFiltersChange, randomSeed, generate
     const addSeed = (randomSeed: string) => {
         if (!seedList.includes(randomSeed)) setSeedList([...seedList, randomSeed]);
     }
+    const deleteSeed = (randomSeed: string) => {
+        const updatedSeedList = seedList.filter(seed => seed !== randomSeed);
+        setSeedList(updatedSeedList);
+        generateNewSeed();
+    }
 
     const handleSubmit = () => {
         onFiltersChange({ ...filters, numberUsers: inputUsers });
@@ -70,6 +75,7 @@ export default function Sidebar({ filters, onFiltersChange, randomSeed, generate
                 <label>Seeds</label>
                 <button type="button" onClick={() => generateNewSeed()}>Generate seed</button>
                 <button type="button" onClick={() => addSeed(randomSeed)}>Add seed</button>
+                <button type="button" onClick={() => deleteSeed(randomSeed)}>Delete seed</button>
                 <select
                     name="seed"
                     value={randomSeed}
