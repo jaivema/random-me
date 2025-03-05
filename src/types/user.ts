@@ -31,7 +31,7 @@ export interface User {
 }
 
 export const initFilters = {
-  numberUsers: 11,
+  numberUsers: 5,
   gender: "",
   nat: "",
   seed: "",

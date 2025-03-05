@@ -13,7 +13,7 @@ export default function UserModalCard({ user, onClose }: UserModalProps) {
       <div>
         <article className="userDetails">
           <div className="userDetailsHeader">
-            <h1>{user.name.first} {user.name.last}</h1>
+            <h1>{user.name.title} {user.name.first} {user.name.last}</h1>
             <button className="closeButton"
               onClick={onClose}
             >
