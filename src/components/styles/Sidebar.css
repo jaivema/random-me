@@ -9,7 +9,7 @@
 .sidebarItems {
     overflow:auto;
     padding: 5px;
-    height: 50vh;
+    height: 70vh;
     max-width: 80%;
     display: flex;
     flex-direction: column;

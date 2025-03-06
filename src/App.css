@@ -3,7 +3,7 @@
     flex-direction: column;
     height: 100vh;
     cursor: default;
-    min-width: 100%;
+    width: 100%;
 }
 
 .content {
@@ -28,12 +28,4 @@
 .onLoading {
     font-size: 42px;
     padding: 100px;
-}
-
-#paginator-section{
-    display: flex;
-    justify-content: end;
-    margin: 4%;
-    min-height:35px;
-    max-height:35px;
 }

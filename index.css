@@ -86,7 +86,7 @@ footer {
     text-align: center;
     align-items: center;
     padding: 5px;
-
+    height: 100px;
     & p {
         width: 90%;
     }
@@ -100,12 +100,15 @@ button {
     color: #206b0d;
     text-align: center;
     cursor: pointer;
+    height: 25px;
 }
 
 button[disabled] {
     display: none;
 }
-
+input{
+    
+}
 p {
     margin: 3px;
 }
