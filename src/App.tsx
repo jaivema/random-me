@@ -19,7 +19,7 @@ function App() {
       if (filters.gender) url += `&gender=${filters.gender}`;
       if (filters.nat) url += `&nat=${filters.nat}`;
       if (filters.seed) url += `&seed=${filters.seed}`; 
-      
+      console.log(url);
       const response = await fetch(url)
       const data = await response.json()
       setRandomUsers(data.results)
@@ -47,7 +47,7 @@ function App() {
 
   const generateNewSeed = () => {
     randomSeed.current = ""
-    setFilters({ ...filters, numberUsers: initFilters.numberUsers, gender: initFilters.gender, nat: initFilters.nat,seed: initFilters.seed })
+    setFilters({ ...filters, numberUsers: initFilters.numberUsers, gender: initFilters.gender, nat: initFilters.nat, seed: initFilters.seed })
     setPagination(initPagination)
   }
 

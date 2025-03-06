@@ -1,15 +1,19 @@
 .sidebar {
-    width: 130px;
+    width: 25%;
     background: linear-gradient(0.5turn, #bdd31c63, #bdd31c63, #344018);
-    padding: 50px;
+    padding: 5px;
+    display:flex;
+    justify-content: center;
 }
 
 .sidebarItems {
-    padding: 10px;
+    overflow:auto;
+    padding: 5px;
+    height: 50vh;
+    max-width: 80%;
     display: flex;
     flex-direction: column;
-    gap: 5px;
-    max-width: 120px;
+    gap: 3px;
 }
 
 input[type="number"]::-webkit-inner-spin-button,
@@ -25,9 +29,13 @@ input[type="number"]::-webkit-outer-spin-button {
     gap: 10px;
 }
 
-.custom-number input {
-    font-size: 22px;
+#customInput {
+    font-size: 18px;
     width: 100%;
+    background-color: rgb(163, 239, 163);
+    color: #206b0d;
+    text-align: center;
+    height: 50px;
 }
 
 .custom-number-buttons{
@@ -35,5 +43,6 @@ input[type="number"]::-webkit-outer-spin-button {
     flex-direction: column;
     align-items: "center";
     justify-content: "center";
-    width: 100%;
+    width: 75%;
+    height: 100%;
 }
