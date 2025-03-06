@@ -14,7 +14,7 @@ interface SidebarProps {
 export default function Sidebar({ filters, onFiltersChange, randomSeed, generateNewSeed }: SidebarProps) {
     const [inputUsers, setInputUsers] = useState<number>(filters.numberUsers);
     const [seedList, setSeedList] = useState<string[]>([]);
-    const [tempFilters, setTempFilters] = useState({ gender: filters.gender, nat: filters.nat });
+    const [tempFilters, setTempFilters] = useState({ gender: filters.gender, nat: filters.nat, seed: filters.seed });
 
     const addSeed = (randomSeed: string) => {
         if (!seedList.includes(randomSeed)) setSeedList([...seedList, randomSeed]);
@@ -32,7 +32,7 @@ export default function Sidebar({ filters, onFiltersChange, randomSeed, generate
     const handleClear = () => {
         setInputUsers(initFilters.numberUsers)
         onFiltersChange({ ...filters, numberUsers: initFilters.numberUsers, gender: initFilters.gender, nat: initFilters.nat });
-        setTempFilters({ gender: initFilters.gender, nat: initFilters.nat });
+        setTempFilters({ gender: initFilters.gender, nat: initFilters.nat, seed: filters.seed });
     }
     return (
         <>
@@ -80,8 +80,8 @@ export default function Sidebar({ filters, onFiltersChange, randomSeed, generate
                 <button type="button" onClick={() => deleteSeed(randomSeed)}>Delete seed</button>
                 <select
                     name="seed"
-                    value={randomSeed}
-                    onChange={(e) => onFiltersChange({ ...filters, seed: e.target.value })}
+                    value={tempFilters.seed}
+                    onChange={(e) => setTempFilters({ ...tempFilters, seed: e.target.value })}
                 >
                     <option value="">Select</option>
                     {seedList.map((seed, index) => (
