@@ -1,4 +1,12 @@
 
+#paginator-section{
+    display: flex;
+    justify-content: end;
+    margin:2px;
+    padding:10px;
+    min-height:35px;
+    max-height:35px;
+}
 
 .paginator-info{
     display: flex;
