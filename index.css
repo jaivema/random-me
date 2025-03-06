@@ -86,7 +86,6 @@ footer {
     text-align: center;
     align-items: center;
     padding: 5px;
-    height: 100px;
     & p {
         width: 90%;
     }
