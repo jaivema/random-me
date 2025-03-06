@@ -1,5 +1,4 @@
 .sidebar {
-    width: 25%;
     background: linear-gradient(0.5turn, #bdd31c63, #bdd31c63, #344018);
     padding: 5px;
     display:flex;
@@ -9,8 +8,7 @@
 .sidebarItems {
     overflow:auto;
     padding: 5px;
-    height: 70vh;
-    max-width: 80%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 3px;
