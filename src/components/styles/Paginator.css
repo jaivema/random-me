@@ -2,34 +2,23 @@
 #paginator-section{
     display: flex;
     justify-content: end;
-    margin:2px;
     padding:10px;
     min-height:35px;
     max-height:35px;
+    background-color: transparent;
 }
 
-.paginator-info{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-button:hover {
-    cursor: pointer;
-    background: #218e1a;
-    color:#daf7c4;
-}
-
-.paginator-buttons{
+#paginator-buttons{
     background-color: transparent;
     color: floralwhite;
     display: flex;
     justify-content: space-evenly;
     text-align: center;
     align-items: center;
+    gap: 10px;
+    margin-right: 5%;
 }
 
-.paginator-buttons button{
-    height: 50px;
+#paginator-buttons button{
     width: 30%;
 }

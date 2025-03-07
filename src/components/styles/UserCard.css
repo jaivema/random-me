@@ -3,6 +3,7 @@
     cursor: pointer;
 }
 .userCard {
+    overflow:hidden;
     display: flex;
     flex-direction: column;
     justify-content: center;

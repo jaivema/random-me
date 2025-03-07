@@ -11,6 +11,7 @@ function App() {
   const [selectedUser, setSelectedUser] = useState<User | null>(null)
   const [pagination, setPagination] = useState<PaginationState>(initPagination)
   const randomSeed = useRef("")
+  const [paginationSeed, setPaginationSeed] = useState("")
 
   async function fetchRandomUsers(): Promise<void> {
     setIsLoading(true);
@@ -18,13 +19,14 @@ function App() {
       let url = `https://randomuser.me/api/?results=${filters.numberUsers}&page=${pagination.page}`;
       if (filters.gender) url += `&gender=${filters.gender}`;
       if (filters.nat) url += `&nat=${filters.nat}`;
-      if (filters.seed) url += `&seed=${filters.seed}`; 
-      console.log(url);
+      if (filters.seed) url += `&seed=${filters.seed}`;
+      console.info(url);
       const response = await fetch(url)
       const data = await response.json()
       setRandomUsers(data.results)
       setPagination(data.info)
       randomSeed.current = data.info.seed
+
       setError({ error: null })
     } catch (error) {
       if (error instanceof Error) {
@@ -57,12 +59,12 @@ function App() {
   }, [filters, pagination.page]);
 
   return (
-    <div className="container">
+    <div id="container">
       <header>
         <h1>Random users generator</h1>
       </header>
-      <div className="content">
-        <aside className="sidebar">
+      <div id="content">
+        <aside id="sidebar">
           <Sidebar filters={filters} onFiltersChange={setFilters} randomSeed={randomSeed.current} generateNewSeed={generateNewSeed} />
         </aside>
         <main>
@@ -78,9 +80,6 @@ function App() {
                 <UserCard key={index} user={user} onClick={() => setSelectedUser(user)} />
               ))}
           </section>
-          <div id="paginator-section">
-            {randomUsers.length > 1 ? <Pagination pagination={pagination} onChangePage={handlePageChange} /> : null}
-          </div>
         </main>
         {selectedUser && (
           <UserModalCard
@@ -88,6 +87,9 @@ function App() {
             onClose={() => setSelectedUser(null)}
           />
         )}
+      </div>
+      <div id="paginator-section">
+        {randomUsers.length > 1 ? <Pagination pagination={pagination} onChangePage={handlePageChange} /> : null}
       </div>
       <footer>
         <h3>Powered by <a href="https://randomuser.me">https://randomuser.me</a></h3>
