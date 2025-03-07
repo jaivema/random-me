@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import './App.css';
+import './components/styles/App.css';
 import { Sidebar, UserCard, UserModalCard, Pagination } from './components';
 import { ErrorState, Filters, initFilters, PaginationState, initPagination, User } from './types/user';
 
@@ -10,8 +10,6 @@ function App() {
   const [filters, setFilters] = useState<Filters>(initFilters)
   const [selectedUser, setSelectedUser] = useState<User | null>(null)
   const [pagination, setPagination] = useState<PaginationState>(initPagination)
-  const randomSeed = useRef("")
-  const [paginationSeed, setPaginationSeed] = useState("")
 
   async function fetchRandomUsers(): Promise<void> {
     setIsLoading(true);
@@ -25,8 +23,6 @@ function App() {
       const data = await response.json()
       setRandomUsers(data.results)
       setPagination(data.info)
-      randomSeed.current = data.info.seed
-
       setError({ error: null })
     } catch (error) {
       if (error instanceof Error) {
@@ -47,13 +43,7 @@ function App() {
     setPagination({ ...pagination, page })
   }
 
-  const generateNewSeed = () => {
-    randomSeed.current = ""
-    setFilters({ ...filters, numberUsers: initFilters.numberUsers, gender: initFilters.gender, nat: initFilters.nat, seed: initFilters.seed })
-    setPagination(initPagination)
-  }
-
-  const order = useEffect(() => {
+  useEffect(() => {
     setRandomUsers([])
     fetchRandomUsers()
   }, [filters, pagination.page]);
@@ -65,7 +55,7 @@ function App() {
       </header>
       <div id="content">
         <aside id="sidebar">
-          <Sidebar filters={filters} onFiltersChange={setFilters} randomSeed={randomSeed.current} generateNewSeed={generateNewSeed} />
+          <Sidebar filters={filters} onFiltersChange={setFilters} pagination={pagination} />
         </aside>
         <main>
           <section id="random-users">
@@ -92,6 +82,8 @@ function App() {
         {randomUsers.length > 1 ? <Pagination pagination={pagination} onChangePage={handlePageChange} /> : null}
       </div>
       <footer>
+        <div id="footerContent">
+
         <h3>Powered by <a href="https://randomuser.me">https://randomuser.me</a></h3>
         <p>Copyright Notice @2024</p>
         <p>
@@ -100,8 +92,9 @@ function App() {
           <a href="https://web.archive.org/web/20160811185628/http://uifaces.com/faq"> UI Faces FAQ </a>
           for more information regarding how you can use these faces.
         </p>
+        </div>
       </footer>
     </div>
   )
 }
-export default App
+export default App;
