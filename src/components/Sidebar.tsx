@@ -16,13 +16,9 @@ export default function Sidebar({ filters, onFiltersChange, randomSeed, generate
     const [seedList, setSeedList] = useState<string[]>([]);
     const [tempFilters, setTempFilters] = useState({ gender: filters.gender, nat: filters.nat, seed: filters.seed });
 
-    const addSeed = (randomSeed: string) => {
-        if (!seedList.includes(randomSeed)) setSeedList([...seedList, randomSeed]);
-    }
-    const deleteSeed = (randomSeed: string) => {
-        const updatedSeedList = seedList.filter(seed => seed !== randomSeed);
-        setSeedList(updatedSeedList);
-        generateNewSeed();
+    const useSeed = (randomSeed: string) => {
+        setTempFilters({ ...tempFilters, seed: randomSeed })
+        //if (!seedList.includes(randomSeed)) setSeedList([...seedList, randomSeed]);
     }
 
     const handleSubmit = () => {
@@ -36,7 +32,7 @@ export default function Sidebar({ filters, onFiltersChange, randomSeed, generate
     }
     return (
         <>
-            <article className="sidebarItems">
+            <article id="sidebarItems">
                 <h2>Filters</h2>
                 <label>Users per page</label>
                 <div className="custom-number">
@@ -76,18 +72,9 @@ export default function Sidebar({ filters, onFiltersChange, randomSeed, generate
                 <button type="button" onClick={() => handleClear()}>Reset</button>
                 <label>Seeds</label>
                 <button type="button" onClick={() => generateNewSeed()}>Generate seed</button>
-                <button type="button" onClick={() => addSeed(randomSeed)}>Add seed</button>
-                <button type="button" onClick={() => deleteSeed(randomSeed)}>Delete seed</button>
-                <select
-                    name="seed"
-                    value={tempFilters.seed}
-                    onChange={(e) => setTempFilters({ ...tempFilters, seed: e.target.value })}
-                >
-                    <option value="">Select</option>
-                    {seedList.map((seed, index) => (
-                        <option key={index} value={seed}>{seed}</option>
-                    ))}
-                </select>
+                <button type="button" onClick={() => useSeed(randomSeed)}>Use seed</button>
+                <p>Seed used:</p> 
+                <p>{randomSeed}</p>
             </article>
         </>
     )

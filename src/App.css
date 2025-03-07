@@ -1,4 +1,4 @@
-.container {
+#container {
     display: flex;
     flex-direction: column;
     height: 100vh;
@@ -6,15 +6,11 @@
     width: 100%;
 }
 
-.content {
+#content {
     flex-grow: 1;
     display: flex;
     overflow:hidden;
-}
-
-#randomm-users{
-    flex:1;
-    overflow-y:auto;
+    
 }
 
 .onError {

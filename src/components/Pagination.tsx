@@ -10,18 +10,13 @@ const Pagination = ({ pagination, onChangePage }: PaginationProps) => {
     const handleNext = () => { onChangePage(pagination.page + 1) };
     return (
         <>
-        <article className="paginator-buttons">
+        <article id="paginator-buttons">
             <span>
                 Page {pagination.page}
             </span>
             <button onClick={handlePrevius} disabled={pagination.page <= 1}>Previus</button>
             <button onClick={handleNext}>Next</button>
         </article>
-        <div>
-            <p>
-                Seed {pagination.seed}
-            </p>
-        </div>
         </>
     )
 }
