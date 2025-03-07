@@ -46,7 +46,7 @@ select {
     background-color: rgb(163, 239, 163);
     color: #206b0d;
     text-align: center;
-    height: 30px;
+    min-height: 50px;
 }
 
 select:hover {
@@ -78,11 +78,11 @@ img {
     filter: grayscale(.8);
 }
 
-
 footer {
     overflow: hidden;
     color: white;
     width: 100%;
+    min-height: 100px;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -101,7 +101,7 @@ button {
     color: #206b0d;
     text-align: center;
     cursor: pointer;
-    height: 40px;
+    min-height: 50px;
 }
 
 button[disabled] {

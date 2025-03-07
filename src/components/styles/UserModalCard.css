@@ -1,3 +1,14 @@
+#userCardModal {
+    position: fixed;
+    background-color: #12121272;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    top: 0px;
+}
+
 .userDetails {
     width: 100%;
     height: 100%;
@@ -11,17 +22,6 @@
         flex: 1;
         align-self: center;
     }
-}
-
-.userCardModal {
-    position: fixed;
-    background-color: #12121272;
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    align-items: center;
-    top: 0px;
 }
 
 .closeButton {
