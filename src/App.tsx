@@ -13,6 +13,7 @@ function App() {
 
   async function fetchRandomUsers(): Promise<void> {
     setIsLoading(true);
+    setError({ error: null });
     try {
       let url = `https://randomuser.me/api/?results=${filters.numberUsers}&page=${pagination.page}`;
       if (filters.gender) url += `&gender=${filters.gender}`;
