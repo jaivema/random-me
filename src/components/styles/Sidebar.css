@@ -1,10 +1,21 @@
 #sidebar {
     padding: 5px;
     display:flex;
-    justify-content: center;
+    flex-direction: column;
+    margin-left: 20px;
+    margin-top: 15px;
 }
 
-#sidebarItems {
+#sidebar-header {
+    border: 3px double #206b0d;
+    border-radius: 5px;
+    display:flex;
+    align-items: center;
+    justify-content: start;
+    gap:10px;
+}
+
+#sidebar-items {
     overflow:auto;
     padding: 5px;
     width: 100%;

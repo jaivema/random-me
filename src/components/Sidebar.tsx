@@ -3,6 +3,7 @@ import { Filters, initFilters, Paginator } from "../types/user";
 import { nationalities } from "../data/nat-codes";
 import { increment, decrement } from "../utils/customNumberInput";
 import "./styles/Sidebar.css";
+import { Filter } from "lucide-react";
 
 interface SidebarProps {
     filters: Filters;
@@ -33,9 +34,11 @@ export default function Sidebar({ filters, onFiltersChange, pagination }: Sideba
         handleSubmit();
     }
     return (
-        <article id="sidebarItems">
-            <h2>Filters</h2>
-            <label>Users per page</label>
+        <article id="sidebar-items">
+            <ul id="sidebar-header">
+                <li><Filter size={38} color={"green"} strokeWidth={1}/></li>
+                <li><h1>Filters</h1></li>
+            </ul>
             <div className="custom-number">
                 <div>
                     <input onChange={(e) => setInputUsers(parseInt(e.target.value))}

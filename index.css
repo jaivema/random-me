@@ -58,8 +58,6 @@ section {
     flex-wrap: wrap;
     justify-content: start;
     gap: 5px;
-    padding:2% 0 0 2%;
-    
 }
 
 article {
