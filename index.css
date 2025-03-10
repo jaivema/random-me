@@ -28,7 +28,7 @@ main {
     display: flex;
     flex-direction: column;
     background-color: transparent;
-    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 header {

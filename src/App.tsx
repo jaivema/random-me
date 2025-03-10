@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from 'react';
 import './components/styles/App.css';
 import { Sidebar, UserCard, UserModalCard, Pagination } from './components';
 import { ErrorState, Filters, initFilters, PaginationState, initPagination, User } from './types/user';
+import Loader from './components/Loader';
+
 
 function App() {
   const [randomUsers, setRandomUsers] = useState<User[]>([])
@@ -60,7 +62,9 @@ function App() {
         </aside>
         <main>
           <section id="random-users">
-            {isLoading && <p className='onLoading'>Loading...</p>}
+            <div className="load-card">
+              <Loader isLoading={isLoading} />
+            </div>
             {error.error ?
               <ul className='onError'>
                 <li><strong>{error.error.message}</strong></li>
@@ -85,14 +89,14 @@ function App() {
       <footer>
         <div id="footerContent">
 
-        <h3>Powered by <a href="https://randomuser.me">https://randomuser.me</a></h3>
-        <p>Copyright Notice @2024</p>
-        <p>
-          All randomly generated photos were hand picked from the authorized section of
-          <a href="http://uifaces.com"> UI Faces</a>. Please visit
-          <a href="https://web.archive.org/web/20160811185628/http://uifaces.com/faq"> UI Faces FAQ </a>
-          for more information regarding how you can use these faces.
-        </p>
+          <h3>Powered by <a href="https://randomuser.me">https://randomuser.me</a></h3>
+          <p>Copyright Notice @2024</p>
+          <p>
+            All randomly generated photos were hand picked from the authorized section of
+            <a href="http://uifaces.com"> UI Faces</a>. Please visit
+            <a href="https://web.archive.org/web/20160811185628/http://uifaces.com/faq"> UI Faces FAQ </a>
+            for more information regarding how you can use these faces.
+          </p>
         </div>
       </footer>
     </div>
