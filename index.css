@@ -58,8 +58,6 @@ section {
     flex-wrap: wrap;
     justify-content: start;
     gap: 5px;
-    padding:2% 0 0 2%;
-    
 }
 
 article {
@@ -124,5 +122,15 @@ a {
 }
 
 ul {
+    margin: 0;
+    padding: 0;
     list-style: none;
+    & li{
+        margin:0px;
+        padding:0px;
+    }
+}
+dd{
+    margin:0px;
+    padding:0px;
 }
