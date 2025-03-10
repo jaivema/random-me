@@ -9,7 +9,20 @@
 #content {
     flex-grow: 1;
     display: flex;
-    overflow:hidden;
+    overflow: hidden;
+}
+
+.load-card {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+}
+
+#random-users {
+    display: flex;
+    justify-content: center;
+    width: 95%;
+    padding: 20px;
 }
 
 .onError {
@@ -20,7 +33,7 @@
     text-align: center;
 }
 
-.onLoading {
+/* .onLoading {
     font-size: 42px;
     padding: 100px;
-}
+} */

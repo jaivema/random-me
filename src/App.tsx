@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from 'react';
 import './components/styles/App.css';
 import { Sidebar, UserCard, UserModalCard, Pagination } from './components';
 import { ErrorState, Filters, initFilters, PaginationState, initPagination, User } from './types/user';
+import Loader from './components/Loader';
+
 
 function App() {
   const [randomUsers, setRandomUsers] = useState<User[]>([])
@@ -60,7 +62,7 @@ function App() {
         </aside>
         <main>
           <section id="random-users">
-            {isLoading && <p className='onLoading'>Loading...</p>}
+            {isLoading && <Loader isLoading={isLoading} />}
             {error.error ?
               <ul className='onError'>
                 <li><strong>{error.error.message}</strong></li>
