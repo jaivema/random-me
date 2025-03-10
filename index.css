@@ -122,5 +122,15 @@ a {
 }
 
 ul {
+    margin: 0;
+    padding: 0;
     list-style: none;
+    & li{
+        margin:0px;
+        padding:0px;
+    }
+}
+dd{
+    margin:0px;
+    padding:0px;
 }

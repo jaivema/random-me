@@ -16,18 +16,16 @@
 
 .userDetailsHeader {
     display: flex;
-    justify-content: right;
     align-items: center;
     & h1 {
         flex: 1;
-        align-self: center;
     }
 }
 
 .closeButton {
-    display: flex;
-    position: relative;
+    align-items: center;
     border: none;
     background-color: transparent;
-    color: #206b0d;
+    transition: all 0.3s ease-in-out;
 }
+

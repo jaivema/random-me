@@ -36,13 +36,13 @@ export default function Sidebar({ filters, onFiltersChange, pagination }: Sideba
     return (
         <article id="sidebar-items">
             <ul id="sidebar-header">
-                <li><Filter size={38} color={"green"} strokeWidth={1}/></li>
+                <li><Filter size={38} color={"black"} strokeWidth={1}/></li>
                 <li><h1>Filters</h1></li>
             </ul>
             <div className="custom-number">
                 <div>
                     <input onChange={(e) => setInputUsers(parseInt(e.target.value))}
-                        type="number" id="customInput" min="1" autoFocus
+                        type="number" id="custom-input" min="1" autoFocus
                         value={inputUsers}>
                     </input>
                 </div>
