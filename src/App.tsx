@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import './components/styles/App.css';
+import './styles/App.css';
 import { Sidebar, UserCard, UserModalCard, Pagination } from './components';
 import { ErrorState, Filters, initFilters, PaginationState, initPagination, User } from './types/user';
 import Loader from './components/Loader';
@@ -62,9 +62,11 @@ function App() {
         </aside>
         <main>
           <section id="random-users">
-            <div className="load-card">
-              <Loader isLoading={isLoading} />
-            </div>
+            {isLoading &&
+              <div className="load-card">
+                <Loader />
+              </div>
+            }
             {error.error ?
               <ul className='onError'>
                 <li><strong>{error.error.message}</strong></li>

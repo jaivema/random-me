@@ -1,5 +1,5 @@
 import type { Paginator } from "../types/user";
-import "./styles/Paginator.css";
+import "../styles/Paginator.css";
 
 interface PaginationProps {
     onChangePage: (page: number) => void;
