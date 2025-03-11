@@ -91,27 +91,6 @@ footer {
     }
 }
 
-button {
-    border: 1px solid #206b0d;
-    padding: 3px;
-    margin: 1px;
-    background-color: rgb(163, 239, 163);
-    color: #206b0d;
-    text-align: center;
-    cursor: pointer;
-    min-height: 50px;
-}
-
-button[disabled] {
-    display: none;
-}
-
-button:hover {
-    cursor: pointer;
-    background: #218e1a;
-    color:#daf7c4;
-}
-
 p {
     margin: 3px;
 }
@@ -130,7 +109,36 @@ ul {
         padding:0px;
     }
 }
+
 dd{
     margin:0px;
     padding:0px;
+}
+
+button {
+    border: 1px solid #206b0d;
+    padding: 3px;
+    margin: 1px;
+    background-color: rgb(163, 239, 163);
+    color: #206b0d;
+    text-align: center;
+    cursor: pointer;
+    min-height: 50px;
+}
+
+button[disabled] {
+    display: none;
+}
+
+@media (hover: hover) {
+    button:hover {
+        cursor: pointer;
+        background: #218e1a;
+        color: #daf7c4;
+    }
+}
+
+button:active {
+    background: #218e1a;
+    color: #daf7c4;
 }
