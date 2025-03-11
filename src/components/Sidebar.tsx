@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Filters, initFilters, Paginator } from "../types/user";
 import { nationalities } from "../data/nat-codes";
 import { increment, decrement } from "../utils/customNumberInput";
-import "./styles/Sidebar.css";
+import "../styles/Sidebar.css";
 import { Filter } from "lucide-react";
 
 interface SidebarProps {

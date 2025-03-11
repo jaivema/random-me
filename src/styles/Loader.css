@@ -4,10 +4,9 @@
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    background-color: transparent;
-    position:absolute;
-    top: 30%;
-    left: 50%;
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
 }
 
 .loading-text {

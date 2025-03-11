@@ -6,16 +6,21 @@
     width: 100%;
 }
 
+.load-card {
+    position:absolute;
+    justify-content: center;
+    align-items:center;
+    width:100%;
+    height:100%;
+    left:40%;
+    top: 30%;
+    z-index:1;   
+}
+
 #content {
     flex-grow: 1;
     display: flex;
     overflow: hidden;
-}
-
-.load-card {
-    position: absolute;
-    top: 25%;
-    left: 50%;
 }
 
 #random-users {
@@ -32,8 +37,3 @@
     padding: 50px;
     text-align: center;
 }
-
-/* .onLoading {
-    font-size: 42px;
-    padding: 100px;
-} */

@@ -1,6 +1,6 @@
 import { Building2, Flag } from "lucide-react";
 import { User } from "../types/user";
-import "./styles/UserCard.css"
+import "../styles/UserCard.css"
 
 interface UserCardProps {
     user: User
