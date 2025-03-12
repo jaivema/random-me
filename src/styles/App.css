@@ -18,6 +18,11 @@
     flex-grow: 1;
     display: flex;
     overflow: hidden;
+    border-bottom: 2px solid black;
+    border-top: 2px solid black;
+    box-shadow: green 5px 5px 20px;
+    
+    
 }
 
 #random-users {

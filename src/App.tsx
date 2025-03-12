@@ -113,8 +113,8 @@ function App() {
       <div id="paginator-section">
         {randomUsers.length > 1 ? <Pagination pagination={pagination} onChangePage={handlePageChange} /> : null}
       </div>
-      <footer>
-        <div id="footerContent">
+      <div id="footerContent">
+        <footer>
           <ul>
             <li>
               <h3>Powered by <a href="https://randomuser.me">https://randomuser.me</a></h3>
@@ -130,8 +130,8 @@ function App() {
             </li>
             <li><p>Copyright Notice @2024</p></li>
           </ul>
-        </div>
-      </footer>
+        </footer>
+      </div>
     </div>
   )
 }

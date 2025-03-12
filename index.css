@@ -44,9 +44,9 @@ header {
     text-align: center;
     padding: 5px;
     text-shadow: 5px 5px 10px rgba(9, 233, 13, 0.939);
-    width: 100%;
     font-family: 'Ubuntu-italic', sans-serif;
     letter-spacing: 10px;
+    box-shadow: green 5px 5px 20px;
 }
 
 select {
@@ -148,9 +148,7 @@ button:active {
         font-size: smaller;
         font-weight: bold;
     }
-    header, #paginator-section {
-      border: 5px solid #e30e0e;
-    }
+    
     .filter-icon {
         width: 20px;
         height: 20px;
