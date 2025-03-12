@@ -36,7 +36,7 @@ export default function Sidebar({ filters, onFiltersChange, pagination }: Sideba
     return (
         <article id="sidebar-items">
             <ul id="sidebar-header">
-                <li><Filter size={38} color={"black"} strokeWidth={1}/></li>
+                <li><Filter className="filter-icon" size={38} color={"black"} strokeWidth={1}/></li>
                 <li><h1>Filters</h1></li>
             </ul>
             <div className="custom-number">

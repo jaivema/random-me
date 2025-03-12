@@ -1,7 +1,8 @@
 #sidebar {
-    padding: 5px;
     display:flex;
-    flex-direction: column;
+    flex-direction:column;
+    padding: 5px;
+    max-width:40%;
     margin-left: 20px;
     margin-top: 15px;
 }

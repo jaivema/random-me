@@ -11,16 +11,23 @@
     font-style: normal;
 }
 
-body,
-html {
+html, body {
     margin: 0;
     padding: 0;
-    width: 100vw;
-    height: 100vh;
     overflow: hidden;
+    display: flex;
     font-size: small;
     font-family: 'Ubuntu', sans-serif;
-    background: linear-gradient(0.5turn, #bdd31c63, #bdd31c63, #344018);
+    width:100vw;
+    height: 100vh;
+}
+
+#root {
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(0.5turn, #c9e01d63, #bdd31c63, #000000);
 }
 
 main {
@@ -76,23 +83,16 @@ img {
     filter: grayscale(.8);
 }
 
-footer {
+footer{
+    font-size: x-small;
     overflow: hidden;
     color: white;
-    width: 100%;
-    min-height: 100px;
-    display: flex;
-    flex-direction: column;
     text-align: center;
-    align-items: center;
     padding: 5px;
-    & p {
-        width: 90%;
-    }
 }
 
 p {
-    margin: 3px;
+    margin: 2px;
 }
 
 a {
@@ -142,3 +142,17 @@ button:active {
     background: #218e1a;
     color: #daf7c4;
 }
+
+@media only screen and (max-width: 600px) {
+    body, html{
+        font-size: smaller;
+        font-weight: bold;
+    }
+    header, #paginator-section {
+      border: 5px solid #e30e0e;
+    }
+    .filter-icon {
+        width: 20px;
+        height: 20px;
+    }
+  }
