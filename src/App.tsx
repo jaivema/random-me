@@ -68,10 +68,10 @@ function App() {
   }
 
   useEffect(() => {
+    setBackground();
   }, [])
   
   useEffect(() => {
-    setBackground();
     setRandomUsers([])
     fetchRandomUsers()
   }, [filters, pagination.page]);
