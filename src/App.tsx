@@ -15,19 +15,21 @@ function App() {
   async function fetchRandomUsers(): Promise<void> {
     setIsLoading(true);
     setError({ error: null });
+    let url = `https://randomuser.me/api/?results=${filters.numberUsers}&page=${pagination.page}`;
     try {
-      let url = `https://randomuser.me/api/?results=${filters.numberUsers}&page=${pagination.page}`;
       if (filters.gender) url += `&gender=${filters.gender}`;
       if (filters.nat) url += `&nat=${filters.nat}`;
       if (filters.seed) url += `&seed=${filters.seed}`;
-      console.info(url);
       const response = await fetch(url)
       const data = await response.json()
-      setRandomUsers(data.results)
-      setPagination(data.info)
-      setError({ error: null })
+      if (data) {
+        setRandomUsers(data.results)
+        setPagination(data.info)
+        setError({ error: null })
+      }
     } catch (error) {
       if (error instanceof Error) {
+        console.error(error)
         setError({
           error: {
             message: error.message,
@@ -45,21 +47,19 @@ function App() {
     const url = `https://php-noise.com/noise.php`;
     try {
       const response = await fetch(url);
-      if (!response.ok) {
-        throw new Error("Error en la solicitud");
-      }
       const blob = await response.blob();
       const imageUrl = URL.createObjectURL(blob);
-
       const bodyElement = document.body;
       if (bodyElement) {
         bodyElement.style.backgroundImage = `url(${imageUrl})`;
-      } else {
-        console.error("El elemento con id 'root' no fue encontrado.");
       }
-      setError({ error: null })
     } catch (error) {
-      console.error("Error al hacer la solicitud:", error);
+      if (error instanceof Error) {
+        console.error("Error al enviar la solicitud: ", {
+          message: error.message,
+          name: error.name || ''
+        });
+      }
     }
   }
 
@@ -68,10 +68,10 @@ function App() {
   }
 
   useEffect(() => {
-    setBackground();
   }, [])
-
+  
   useEffect(() => {
+    setBackground();
     setRandomUsers([])
     fetchRandomUsers()
   }, [filters, pagination.page]);
