@@ -76,6 +76,11 @@ function App() {
 
   return (
     <div id="container">
+      {isLoading &&
+        <div className="load-card">
+          <Loader />
+        </div>
+      }
       <header>
         <h1>Random users generator</h1>
       </header>
@@ -85,11 +90,7 @@ function App() {
         </aside>
         <main>
           <section id="random-users">
-            {isLoading &&
-              <div className="load-card">
-                <Loader />
-              </div>
-            }
+
             {error.error
               ? <ul className='onError'>
                 <li><strong>{error.error.message}</strong></li>

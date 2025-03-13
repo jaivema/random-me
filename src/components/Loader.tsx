@@ -4,12 +4,12 @@ import '../styles/Loader.css';
 
 const Loader = () => {
     return (
-        <article className="loader">
+        <div className="loader">
             <p className='loading-text'>Loading...</p>
             <div className="loader-circle">
-            <LoaderCircle size={56} color={"green"} strokeWidth={3} className="animate-spin" />
+                <LoaderCircle size={56} color={"green"} strokeWidth={3} className="animate-spin" />
+            </div>
         </div>
-        </article>
     )
 }
 export default Loader;
