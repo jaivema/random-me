@@ -14,6 +14,7 @@
     align-items: center;
     justify-content: center;
     gap:10px;
+    background: floralwhite;
 }
 
 #sidebar-items {
@@ -23,6 +24,7 @@
     display: flex;
     flex-direction: column;
     gap: 3px;
+    background: transparent;
 }
 
 input[type="number"]::-webkit-inner-spin-button,

@@ -29,7 +29,7 @@ npm run dev
 
 ## Usage
 
-1. The application loads with 3 random user profiles by default
+1. The application loads with 5 random user profiles by default
 2. Use the number input field to specify how many user profiles you want to generate
 3. Click the "Submit >" button to fetch and display new random user profiles
 4. The app will show a loading state while fetching data
@@ -50,6 +50,21 @@ This application uses the Random User Generator API:
 - Query Parameters:
   - `results`: Number of user profiles to generate
 
+The application background is generated with the php-noise API. It generates a random background color.
+-Base URL: `https://php-noise.com/noise.php`
+- Parameters:
+- `--tiles <value>`
+	Number of tiles per row and column.
+	The image is square, therefore it hast $tiles x $tiles tiles.
+- `--tileSize <value>`
+	Width and height of one tile in pixels.
+- `--borderWidth <value>`
+	Width of the grid which is drawed between tiles in pixels.
+- `--mode <value>`
+	Color calculation mode.
+	1. brightness:	Calculates the colors by brightness adjustments based on the reference color.
+	2. around:	Calculates the colors randomly around the reference color.
+
 ## Error Handling
 
 The application includes robust error handling for:
@@ -61,6 +76,7 @@ The application includes robust error handling for:
 
 - Random user data provided by [Random User Generator](https://randomuser.me)
 - Profile pictures sourced from [UI Faces](http://uifaces.com)
+- Random backgrounds provided by [Noise PHP](https://php-noise.com/?ref=public_apis&utm_medium=website)
 
 ## License
 

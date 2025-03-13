@@ -7,7 +7,7 @@ import { ErrorState, Filters, initFilters, PaginationState, initPagination, User
 function App() {
   const [randomUsers, setRandomUsers] = useState<User[]>([])
   const [error, setError] = useState<ErrorState>({ error: null })
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState<boolean>(true)
   const [filters, setFilters] = useState<Filters>(initFilters)
   const [selectedUser, setSelectedUser] = useState<User | null>(null)
   const [pagination, setPagination] = useState<PaginationState>(initPagination)
@@ -44,15 +44,13 @@ function App() {
   }
 
   async function setBackground() {
-    const url = `https://php-noise.com/noise.php`;
+    const url = `https://php-noise.com/noise.php?tiles=${50}&tileSize=${20}&borderWidth=${10}&mode=${2}`;
     try {
       const response = await fetch(url);
       const blob = await response.blob();
       const imageUrl = URL.createObjectURL(blob);
       const bodyElement = document.body;
-      if (bodyElement) {
-        bodyElement.style.backgroundImage = `url(${imageUrl})`;
-      }
+      if (bodyElement) bodyElement.style.backgroundImage = `url(${imageUrl})`;
     } catch (error) {
       if (error instanceof Error) {
         console.error("Error al enviar la solicitud: ", {
@@ -70,7 +68,7 @@ function App() {
   useEffect(() => {
     setBackground();
   }, [])
-  
+
   useEffect(() => {
     setRandomUsers([])
     fetchRandomUsers()
@@ -92,34 +90,35 @@ function App() {
                 <Loader />
               </div>
             }
-            {error.error ?
-              <ul className='onError'>
+            {error.error
+              ? <ul className='onError'>
                 <li><strong>{error.error.message}</strong></li>
                 <li><strong>Name:</strong> {error.error.name}</li>
                 <li><strong>Message:</strong> {error.error.message}</li>
               </ul>
               : randomUsers.map((user: User, index) => (
                 <UserCard key={index} user={user} onClick={() => setSelectedUser(user)} />
-              ))}
+              ))
+            }
           </section>
         </main>
         {selectedUser && (
-          <UserModalCard
-            user={selectedUser}
-            onClose={() => setSelectedUser(null)}
-          />
+          <UserModalCard user={selectedUser} onClose={() => setSelectedUser(null)} />
         )}
       </div>
       <div id="paginator-section">
-        {randomUsers.length > 1 ? <Pagination pagination={pagination} onChangePage={handlePageChange} /> : null}
+        {randomUsers.length > 1
+          ? <Pagination pagination={pagination} onChangePage={handlePageChange} />
+          : null
+        }
       </div>
       <div id="footerContent">
         <footer>
+          <ul id="footerHead">
+            <li><h3>Powered by <a href="https://randomuser.me">https://randomuser.me</a></h3></li>
+            <li><h3>Background generated with PHP-Noise <a href="https://php-noise.com">https://php-noise.com</a></h3></li>
+          </ul>
           <ul>
-            <li>
-              <h3>Powered by <a href="https://randomuser.me">https://randomuser.me</a></h3>
-              <h3>Background generated with PHP-Noise <a href="https://php-noise.com">https://php-noise.com</a></h3>
-            </li>
             <li>
               <p>
                 All randomly generated photos were hand picked from the authorized section of
