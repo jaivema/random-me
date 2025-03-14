@@ -2,6 +2,8 @@
 
 A React application that generates random user profiles using the [Random User Generator API](https://randomuser.me/). The app allows users to specify the number of random user profiles they want to display and shows their basic information including name, picture, location, and email.
 
+![](src/assets/233931.png)
+
 ## Features
 
 - Generate random user profiles with customizable quantity
@@ -31,7 +33,7 @@ npm run dev
 
 1. The application loads with 5 random user profiles by default
 2. Use the number input field to specify how many user profiles you want to generate
-3. Click the "Submit >" button to fetch and display new random user profiles
+3. Click the "Submit" button to fetch and display new random user profiles
 4. The app will show a loading state while fetching data
 5. If any errors occur during the fetch operation, they will be displayed to the user
 
@@ -42,7 +44,7 @@ npm run dev
 - Random User Generator API
 - lucide-react
 - types/node. TypeScript definitions for react.
-- 
+
 ## API Information
 
 This application uses the Random User Generator API:
