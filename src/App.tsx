@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import './styles/App.css';
 import { Sidebar, UserCard, UserModalCard, Pagination, Loader } from './components';
 import { ErrorState, Filters, initFilters, PaginationState, initPagination, User } from './types/user';
-
+import { UsersRound } from 'lucide-react';
 
 function App() {
   const [randomUsers, setRandomUsers] = useState<User[]>([])
@@ -82,6 +82,9 @@ function App() {
         </div>
       }
       <header>
+        <div className="icon">
+          <UsersRound size={36} strokeWidth={2}  />
+        </div>
         <h1>Random users generator</h1>
       </header>
       <div id="content">
@@ -90,7 +93,6 @@ function App() {
         </aside>
         <main>
           <section id="random-users">
-
             {error.error
               ? <ul className='onError'>
                 <li><strong>{error.error.message}</strong></li>
