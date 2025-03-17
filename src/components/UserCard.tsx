@@ -1,4 +1,4 @@
-import { Building2, Flag } from "lucide-react";
+import { Building2Icon, FlagIcon } from "lucide-react";
 import { User } from "../types/user";
 import "../styles/UserCard.css"
 
@@ -18,13 +18,13 @@ const UserCard = ({ user, onClick }: UserCardProps) => {
                 <ul className="user-card-list">
                     <li className="user-card-item">
                         <dl>
-                            <dt><Flag size={18} strokeWidth={1} /></dt>
+                            <dt><FlagIcon size={18} strokeWidth={1} /></dt>
                             <dd>{user.location.country} ({user.nat})</dd>
                         </dl>
                     </li>
                     <li className="user-card-item">
                         <dl>
-                            <dt><Building2 size={18} strokeWidth={1} /></dt>
+                            <dt><Building2Icon size={18} strokeWidth={1} /></dt>
                             <dd>{user.location.city} - {user.location.state}</dd>
                         </dl>
                     </li>

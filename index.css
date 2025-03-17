@@ -40,14 +40,24 @@ main {
 }
 
 header {
-    background-color: rgb(255,255,255,0.3);
-    color: black;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 5px;
-    text-shadow: 5px 5px 10px rgba(9, 233, 13, 0.939);
-    font-family: 'Ubuntu-italic', sans-serif;
-    letter-spacing: 10px;
+    background-color: rgb(255,255,255,0.3);
     box-shadow: green 5px 5px 20px;
+    gap: 20px;
+}
+header h1{
+    
+    font-family: 'Ubuntu-italic', sans-serif;
+    text-shadow: 5px 5px 10px rgba(9, 233, 13, 0.939);
+    letter-spacing: 10px;
+}
+.icon{
+    background-color: rgb(163, 239, 163);
+    padding: 15px;
+    border-radius: 50%;
 }
 
 select {
@@ -146,7 +156,7 @@ button:active {
     color: #daf7c4;
 }
 
-@media screen and (max-width: 600px) {
+@media (max-width: 600px) {
     body, html{
         font-size: smaller;
         font-weight: bold;

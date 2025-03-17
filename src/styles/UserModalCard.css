@@ -1,12 +1,33 @@
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -60%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
 #userCardModal {
     position: fixed;
     background-color: #12121272;
     display: flex;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation:fadeIn 0.3s ease-in-out;
+}
+
+.userDetailsHeader {
+    display: flex;
     align-items: center;
-    top: 0px;
+
+    & h1 {
+        flex: 1;
+        border: 1px solid #206b0d;
+        margin-left:2%;
+        box-shadow: #206b0d 5px 5px 10px;
+    }
 }
 
 .userDetails {
@@ -14,12 +35,49 @@
     height: 100%;
 }
 
-.userDetailsHeader {
+.userDetailsBody, p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:10px 20px;
+}
+
+.user-info {
+    display: flex;
+    flex-direction:column;
+    padding-left: 5%;
+    padding-bottom: 5%;
+}
+
+.info-item {
     display: flex;
     align-items: center;
-    & h1 {
-        flex: 1;
-    }
+}
+
+.info-item dl {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin: 5px 20px;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+}
+
+.address {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+    color: #555;
+    text-align: left;
+}
+
+.address li {
+    margin: 5px 0;
+}
+
+dd>svg {
+    vertical-align: middle;
 }
 
 .closeButton {
@@ -29,3 +87,36 @@
     transition: all 0.3s ease-in-out;
 }
 
+@media (max-width: 600px) {
+    #userCardModal {
+        width: 90%; /* Ocupa casi todo el ancho de la pantalla */
+        max-width: none; /* Elimina el límite máximo de ancho */
+        padding: 0;
+    }
+    
+    .userDetailsHeader h1 {
+        font-size: 20px; /* Reduce el tamaño del título */
+    }
+    
+    .userDetailsBody img {
+        width: 100%; /* La imagen ocupa todo el ancho */
+        height: 100%;
+    }
+    
+    .info-item dl {
+        flex-direction: column; /* Apila los elementos verticalmente */
+        align-items: flex-start; /* Alinea los elementos a la izquierda */
+        font-size: small;
+    }
+
+    .modal-icon{
+        width: 15px;
+        height: 15px;
+        stroke-width: 2;
+    }
+
+    .closeButton {
+        width: 30px; /* Reduce el tamaño del botón de cierre */
+        height: 30px;
+    }
+}
